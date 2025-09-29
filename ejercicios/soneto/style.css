@@ -42,6 +42,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 .soneto {
@@ -51,8 +52,7 @@ main {
     border-color: var(--color-secundario);
     border-style: solid;
     border-width: 1px;
-    padding:2rem;
-    margin: 10px;
+    padding: 20px;
 }
 
 .soneto__titulo {
@@ -78,16 +78,15 @@ main {
     line-height: 1.2;
     color: var(--font-color);
     font-family: var(--font-family-principal);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
 }
-
-@media screen and (max-width: 480px) {
-    .soneto {
-        width: 90%;
-    }
-    .soneto__texto {
-        overflow-x: auto;
-        padding-bottom: 5px;
-        scrollbar-width: thin;
-        scrollbar-color: var(--color-secundario) var(--color-primario);
-    }
+.texto__estrofa {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.texto__verso {
+    line-height: 1rem;
 }
