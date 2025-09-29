@@ -1,0 +1,153 @@
+/**********************************************************************/
+/*  PROYECTO mecanografía      */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --tono: 100;
+    --color-fondo-primario: hsl(100, 50%, 85%); /* hsl(100, 38%, 85%) */
+    --color-fondo-secundario: hsl(100, 38%, 90%);
+    /* --color-fondo-secundario: hsl(100, 38%, 85%); */
+    /* --color-fondo-secundario: hsl(100, 20%, 50%); */
+    /* --color-fondo-terciario: hsl(100, 38%, 20%); */
+    /* --color-fondo-terciario: hsl(290, 20%, 50%); */
+
+    /* --tono: 36;
+    --color-primario: hsl(var(--tono), 100%, 89%);
+    --color-secundario: hsl(var(--tono), 100%, 30%) */;
+    --color-primario: hsl(102, 18%, 56%);
+    --color-secundario: hsl(100, 7%, 50%);
+
+
+    --font-family-principal: montserrat, sans-serif;
+
+    --font-color: hsl(100, 0%, 15%);
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-fondo-secundario) var(--color-primario);
+    scrollbar-gutter: both-edges;
+    scroll-behavior: smooth;
+    
+}
+
+body {
+    font-family: var(--font-family-principal);
+    font-size: 16px;
+    color: var(--font-color);
+    
+}
+
+main {
+    background-color: var(--color-fondo-primario);
+    
+    /* background: linear-gradient(to right,var(--color-fondo-secundario), var(--color-fondo-primario), var(--color-fondo-secundario)); *//* ,
+                linear-gradient(to bottom, var(--color-fondo-secundario), var(--color-fondo-terciario)) */;
+                /* linear-gradient(to left, var(--color-primario) 30%,  transparent), */
+                /* linear-gradient(to top, var(--color-secundario) 30%, transparent) */;
+    min-height: 100dvh;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+h1 {
+    color: var(--font-color);
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: .2rem;
+    word-spacing: .4rem;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+.test {
+    /* background-color: hsl(0, 0%, 93%); */
+    background-color: var(--color-fondo-secundario);
+    /* border: 2px solid hsla(0, 0%, 93%); */
+    border-radius: 17px;
+    box-shadow: 0 0 5px hsl(0, 0%, 50%);
+    padding: 50px 70px;
+    width: 100%;
+    max-width: 800px;
+    display: grid;
+    grid-template-areas: "boton analiticas"
+                        "interaccion interaccion";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+}
+
+.test__boton {
+    grid-area: boton;
+    background-color: var(--color-primario);
+    color: var(--font-color);
+    border-radius: 12px;
+    font-family: montserrat, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    position: relative;
+    &:hover {
+        background-color: var(--color-secundario);
+        color: hsl(0, 0%, 93%);
+        scale: 1.05;
+        transition: scale .2s ease-in-out;
+    }
+    &:active {
+        scale: 0.95;
+        transition: scale .08s ease-in-out;
+    }
+    transition: background-color .2s ease-in-out;
+    
+}
+
+.test__analiticas {
+    grid-area: analiticas;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.test__interaccion {
+    grid-area: interaccion;
+    border: 1px dashed black;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    font-size: 1.2rem;   
+}
+
+.interaccion__referencia {
+        font-size: 2.3rem;
+        font-weight: 500;
+    }
+
+.interaccion__entrada {
+        font-size: 1.5rem;
+        padding: .5rem 1rem;
+        border: 2px solid var(--color-fondo-terciario);
+        border-radius: 10px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+
