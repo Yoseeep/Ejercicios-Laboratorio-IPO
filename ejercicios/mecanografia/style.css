@@ -158,6 +158,10 @@ h1 {
     &:disabled {
         display: none;
     }
+    &:focus {
+        outline: 2px solid var(--color-secundario);
+        box-shadow: 0 0 5px var(--color-primario);
+    }
 }
 
 .bienEscrita {
