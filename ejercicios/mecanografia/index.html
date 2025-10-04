@@ -15,15 +15,15 @@
 <body>
   <main>
     <h1> TEST MECANOGRAFÍA</h1>
-    <div  class="test">
+    <div  class="test test--sinComenzar" id="test">
       <button id="btnComienzo" class="test__boton">Comenzar Test</button>
       <div class="test__analiticas">
         <p> Tiempo (sgs): <span id="tiempo">0</span></p>
-        <p> Palabras correctas: <span id="letrasCorrectas">0</span></p>
+        <p> Letras correctas: <span id="letrasCorrectas">0</span></p>
       </div>
-      <div class="test__interaccion">
+      <div class="test__interaccion" id="interaccionContainer">
         <p id="referencia" class="interaccion__referencia">Palabra</p>
-        <input type="text" id="entrada" class="interaccion__entrada" autocomplete="off" placeholder="Escriba la palabra" />
+        <input disabled type="text" id="entrada" class="interaccion__entrada" autocomplete="off" placeholder="Escriba la palabra" />
       </div>
     </div>
   </main>

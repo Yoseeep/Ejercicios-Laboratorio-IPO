@@ -35,7 +35,7 @@
 }
 
 body {
-    font-family: var(--font-family-principal);
+    font-family: var(--font-family-principal), sistem-ui, sans-serif;
     font-size: 16px;
     color: var(--font-color);
     
@@ -85,6 +85,13 @@ h1 {
     gap: 20px;
     justify-items: stretch;
     align-items: stretch;
+}
+.test--sinComenzar {
+    grid-template-areas: "boton analiticas";
+    grid-template-rows: auto;
+    & .test__interaccion {
+        display: none;
+    }
 }
 
 .test__boton {
@@ -137,23 +144,26 @@ h1 {
 }
 
 .interaccion__referencia {
-        font-size: 2.3rem;
-        font-weight: 500;
+    font-size: 2.3rem;
+    font-weight: 500;
 }
 
 .interaccion__entrada {
-        font-size: 1.5rem;
-        padding: .5rem 1rem;
-        border: 2px solid black;
-        border-radius: 10px;
-        width: 100%;
-        max-width: 400px;
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    &:disabled {
+        display: none;
+    }
 }
 
 .bienEscrita {
-        color: green;
+    color: green;
 }
 .malEscrita {
-        color: red;
+    color: red;
 }
 

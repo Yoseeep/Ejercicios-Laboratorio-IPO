@@ -3,9 +3,10 @@
 import {recuperaElementoAleatorio, compruebaLetras, creaPalabraReferencia}  from "./utils.js";
 
 // Lista de palabras de referencia
-const listaPalabras = ["hola", "teclado", "ordenador", "javascript", "programación", "desarrollo", "computadora", "tecnología", "internet", "software"];
+const listaPalabras = ["hola", "teclado", "ordenador", "JavaScript", "programación", "desarrollo", "computadora", "tecnología", "internet", "software", "Yo soy tu padre"];
 
 // Elementos del DOM
+const testElem = document.getElementById('test');
 const botonComienzoElem = document.getElementById('btnComienzo');
 const palabraReferenciaElem = document.getElementById('referencia');
 const palabraEntradaElem = document.getElementById('entrada');
@@ -21,29 +22,21 @@ let temporizador = null;
 // Event listeners
 botonComienzoElem.addEventListener('click', iniciarTest);
 palabraEntradaElem.addEventListener('input', comprobarEntrada);
+window.addEventListener("keydown", (tecla) => {
+    if (tecla.code === 'Enter') iniciarTest();
+})
 
-// Inicia el temporizador
-/* let miIntervalo = setInterval(() => {
-    tiempo++;
-    console.log(`Contador: ${tiempo} segundos`);
-    tiempoElem.innerText = String(tiempo);
-
-    if (tiempo >= 30) {
-        clearInterval(miIntervalo);
-        palabraEntradaElem.disabled = true;
-        miIntervalo = 0;
-        //alert('¡Tiempo terminado! Has escrito ' + letrasCorrectasElem.innerHTML + ' letras correctamente.');
-    }
-}, 1000); */
-
+// Funciones del temporizador
 function iniciaTemporizador() {
+    palabraEntradaElem.disabled = false;
     temporizador = setInterval(() => {
-        if (tiempo >= tiempoMaximo-1) {
-            paraTemporizador();
-        }
         tiempo++;
         console.log(`Contador: ${tiempo} segundos`);
         tiempoElem.innerText = String(tiempo);
+        if (tiempo >= tiempoMaximo) {
+            paraTemporizador();
+            alert('¡Tiempo terminado!');
+        }
     }, 1000);
 }
 
@@ -63,7 +56,10 @@ function reiniciaTemporizador() {
 
 
 // Función para iniciar el ejercicio
-async function iniciarTest() {
+function iniciarTest() {
+    // Muestra el área de test
+    testElem.classList.remove('test--sinComenzar');
+
     // Recupera una palabra aleatoria de la lista
     palabraReferencia = recuperaElementoAleatorio(listaPalabras);
 
@@ -73,6 +69,7 @@ async function iniciarTest() {
     letrasCorrectasElem.innerHTML = '0';
     palabraEntradaElem.disabled = false;
     palabraEntradaElem.focus();
+
 
     // Reinicia y comienza el temporizador (con límite de tiempo)
     reiniciaTemporizador();
@@ -92,8 +89,6 @@ function comprobarEntrada() {
     palabraReferenciaElem.innerHTML = creaPalabraReferencia(palabraReferencia, escrito);
     if (letrasMal.length === 0 && escrito.length === palabraReferencia.length) {
         paraTemporizador();
-
-        /*alert('¡Felicidades! Has escrito la palabra correctamente.');*/
     }
 }
 
