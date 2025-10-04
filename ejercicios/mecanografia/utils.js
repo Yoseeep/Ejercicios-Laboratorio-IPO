@@ -17,7 +17,7 @@ export function recuperaElementoAleatorio(array) {
 
 
 
-export function compruebaLetrasMal(referencia, escrito) {
+export function compruebaLetras(referencia, escrito) {
     // Comprueba que las letras escritas coinciden con las de referencia
     // Devuelve un array con las listas mal escritas y otro array con las bien escritas
     const letrasMal = [];

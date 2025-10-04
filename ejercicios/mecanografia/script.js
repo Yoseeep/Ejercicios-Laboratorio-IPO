@@ -1,9 +1,9 @@
 /**********************************************************************/
 /*  PROYECTO Mecanografía      */
-import {recuperaElementoAleatorio, compruebaLetrasMal, creaPalabraReferencia}  from "./utils.js";
+import {recuperaElementoAleatorio, compruebaLetras, creaPalabraReferencia}  from "./utils.js";
 
 // Lista de palabras de referencia
-const listaPalabras = ["hola", "teclado", "ordenador", "javascript", "programacion", "desarrollo", "computadora", "tecnologia", "internet", "software"];
+const listaPalabras = ["hola", "teclado", "ordenador", "javascript", "programación", "desarrollo", "computadora", "tecnología", "internet", "software"];
 
 // Elementos del DOM
 const botonComienzoElem = document.getElementById('btnComienzo');
@@ -12,31 +12,58 @@ const palabraEntradaElem = document.getElementById('entrada');
 const letrasCorrectasElem = document.getElementById('letrasCorrectas');
 const tiempoElem = document.getElementById('tiempo');
 
-// Variable para almacenar la palabra de referencia actual
+// Variables globales
 let palabraReferencia = '';
-
+let tiempoMaximo = 20; // Tiempo máximo en segundos
 let tiempo = 0;
+let temporizador = null;
+
+// Event listeners
+botonComienzoElem.addEventListener('click', iniciarTest);
+palabraEntradaElem.addEventListener('input', comprobarEntrada);
+
 // Inicia el temporizador
-let miIntervalo = setInterval(() => {
-    console.log('Contador: ${tiempo} segundos');
-    tiempoElem.innerText = String(tiempo);
+/* let miIntervalo = setInterval(() => {
     tiempo++;
+    console.log(`Contador: ${tiempo} segundos`);
+    tiempoElem.innerText = String(tiempo);
 
     if (tiempo >= 30) {
         clearInterval(miIntervalo);
         palabraEntradaElem.disabled = true;
         miIntervalo = 0;
-        alert('¡Tiempo terminado! Has escrito ' + letrasCorrectasElem.innerHTML + ' letras correctamente.');
+        //alert('¡Tiempo terminado! Has escrito ' + letrasCorrectasElem.innerHTML + ' letras correctamente.');
     }
-}, 1000);
+}, 1000); */
 
-// Event listeners
-botonComienzoElem.addEventListener('click', iniciarEjercicio);
-palabraEntradaElem.addEventListener('input', comprobarEntrada);
+function iniciaTemporizador() {
+    temporizador = setInterval(() => {
+        if (tiempo >= tiempoMaximo-1) {
+            paraTemporizador();
+        }
+        tiempo++;
+        console.log(`Contador: ${tiempo} segundos`);
+        tiempoElem.innerText = String(tiempo);
+    }, 1000);
+}
+
+function paraTemporizador() {
+    clearInterval(temporizador);
+    palabraEntradaElem.disabled = true;
+}
+
+function reiniciaTemporizador() {
+    tiempo = 0;
+    tiempoElem.innerText = String(tiempo);
+    if (temporizador != null) {
+        clearInterval(temporizador);
+        temporizador = null;
+    }
+}
 
 
 // Función para iniciar el ejercicio
-function iniciarEjercicio() {
+async function iniciarTest() {
     // Recupera una palabra aleatoria de la lista
     palabraReferencia = recuperaElementoAleatorio(listaPalabras);
 
@@ -46,12 +73,17 @@ function iniciarEjercicio() {
     letrasCorrectasElem.innerHTML = '0';
     palabraEntradaElem.disabled = false;
     palabraEntradaElem.focus();
+
+    // Reinicia y comienza el temporizador (con límite de tiempo)
+    reiniciaTemporizador();
+    iniciaTemporizador();
+    console.log(tiempo);
 }
 
 // Función para comprobar la entrada del usuario
 function comprobarEntrada() {
     const escrito = palabraEntradaElem.value;
-    const { letrasMal, letrasBien } = compruebaLetrasMal(palabraReferencia, escrito);
+    const { letrasMal, letrasBien } = compruebaLetras(palabraReferencia, escrito);
 
     // Actualiza el número de letras correctas
     letrasCorrectasElem.innerHTML = String(letrasBien.length);
@@ -59,7 +91,7 @@ function comprobarEntrada() {
     // Actualiza la visualización de la palabra de referencia
     palabraReferenciaElem.innerHTML = creaPalabraReferencia(palabraReferencia, escrito);
     if (letrasMal.length === 0 && escrito.length === palabraReferencia.length) {
-        palabraEntradaElem.disabled = true;
+        paraTemporizador();
 
         /*alert('¡Felicidades! Has escrito la palabra correctamente.');*/
     }
