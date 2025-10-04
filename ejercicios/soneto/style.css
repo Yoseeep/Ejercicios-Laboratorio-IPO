@@ -80,7 +80,7 @@ main {
     font-family: var(--font-family-principal);
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2.7rem;
 }
 .texto__estrofa {
     display: flex;
@@ -88,5 +88,5 @@ main {
     gap: 0.7rem;
 }
 .texto__verso {
-    line-height: 1rem;
+    line-height: 1.1rem;
 }
