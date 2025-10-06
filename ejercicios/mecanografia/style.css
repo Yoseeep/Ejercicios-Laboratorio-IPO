@@ -165,6 +165,9 @@ h1 {
 }
 
 @media (max-width: 513px) {
+    main {
+        justify-content: start;
+    }
     h1 {
         font-size: 9dvw;
     }
