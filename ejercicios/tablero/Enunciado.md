@@ -1,4 +1,4 @@
-# PROYECTO Tablero
+#  PROYECTO Tablero
 
 El proyecto consiste en una aplicación web para completar un juego de fichas dispuestas en un tablero cuadrado NxN.
 La mecánica del juego consiste en intecambiar la posición de dos fichas con el objetivo de

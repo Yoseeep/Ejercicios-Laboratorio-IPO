@@ -1,6 +1,138 @@
 /* style.css */
 /* Proyecto Tablero */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --tono: 100;
+    --color-fondo-primario: hsl(100, 50%, 85%); /* hsl(100, 38%, 85%) */
+    --color-fondo-secundario: hsl(100, 38%, 90%);
+    /* --color-fondo-secundario: hsl(100, 38%, 85%); */
+    /* --color-fondo-secundario: hsl(100, 20%, 50%); */
+    /* --color-fondo-terciario: hsl(100, 38%, 20%); */
+    /* --color-fondo-terciario: hsl(290, 20%, 50%); */
+
+    /* --tono: 36;
+    --color-primario: hsl(var(--tono), 100%, 89%);
+    --color-secundario: hsl(var(--tono), 100%, 30%) */;
+    --color-primario: hsl(102, 18%, 56%);
+    --color-secundario: hsl(100, 7%, 50%);
+
+
+    --font-family-principal: montserrat;
+
+    --font-color: hsl(100, 0%, 15%);
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-fondo-secundario) var(--color-primario);
+    scrollbar-gutter: both-edges;
+    scroll-behavior: smooth;
+
+}
+
+body {
+    font-family: var(--font-family-principal), sistem-ui, sans-serif;
+    font-size: 16px;
+    color: var(--font-color);
+
+}
+
+header  {
+    font-size: 16px;
+    min-height: 100dvh;
+    min-width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: conic-gradient(from 45deg at 70% 70%,
+                    rgba(10, 74, 89, 1.000) 0.000deg,
+                    rgba(10, 74, 89, 1.000) 27.692deg,
+                    rgba(11, 82, 124, 1.000) 27.692deg,
+                    rgba(11, 82, 124, 1.000) 55.385deg,
+                    rgba(13, 92, 159, 1.000) 55.385deg,
+                    rgba(13, 92, 159, 1.000) 83.077deg,
+                    rgba(16, 104, 194, 1.000) 83.077deg,
+                    rgba(16, 104, 194, 1.000) 110.769deg,
+                    rgba(18, 118, 227, 1.000) 110.769deg,
+                    rgba(18, 118, 227, 1.000) 138.462deg,
+                    rgba(21, 133, 255, 1.000) 138.462deg,
+                    rgba(21, 133, 255, 1.000) 166.154deg,
+                    rgba(24, 150, 255, 1.000) 166.154deg,
+                    rgba(24, 150, 255, 1.000) 193.846deg,
+                    rgba(28, 169, 255, 1.000) 193.846deg,
+                    rgba(28, 169, 255, 1.000) 221.538deg,
+                    rgba(31, 188, 255, 1.000) 221.538deg,
+                    rgba(31, 188, 255, 1.000) 249.231deg,
+                    rgba(35, 209, 255, 1.000) 249.231deg,
+                    rgba(35, 209, 255, 1.000) 276.923deg,
+                    rgba(39, 230, 255, 1.000) 276.923deg,
+                    rgba(39, 230, 255, 1.000) 304.615deg,
+                    rgba(43, 251, 255, 1.000) 304.615deg,
+                    rgba(43, 251, 255, 1.000) 332.308deg,
+                    rgba(47, 255, 255, 1.000) 332.308deg 360.000deg);
+}
+
+
+.header-container {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, .3);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(209, 213, 219, 0.3);
+}
+
+h1 {
+    color: var(--font-color);
+    font-size: 3em;
+    font-weight: 800;
+    letter-spacing: .1rem;
+    text-align: center;
+    text-decoration-line: underline;
+    text-decoration-thickness: .1em;
+    text-underline-offset: .13em;
+}
+
+.reglas {
+    color: var(--font-color);
+    font-size: 1.2em;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: .05rem;
+    text-wrap: pretty;
+    text-align: center;
+    max-width: 600px;
+    & span {
+        font-weight: 700;
+    }
+}
+
+.configuracion {
+    font-size: 1.1em;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 15px;
+    padding: 15px 20px;
+    border: 2px dashed var(--font-color);
+}
+
+
+
 .ficha {
     width: 50px;
     height: 50px;

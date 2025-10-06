@@ -5,24 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
     <title>Tablero</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script defer src="script.js"></script>
   </head>
 
   <body>
 
-    <p>Proyecto Tablero</p>
+    
+<!--     <div class="ficha" data-ficha></div>
     <div class="ficha" data-ficha></div>
     <div class="ficha" data-ficha></div>
-    <div class="ficha" data-ficha></div>
-    <div class="ficha" data-ficha></div>
-    <button id="inicio">Inicio</button>
-    <label for="tamañoFicha">Tamaño de la ficha:</label>
-    <select id="tamañoFicha">
-      <option value="pequeña">Pequeña</option>
-      <option value="mediana">Mediana</option>
-      <option value="grande">Grande</option>
-    </select>
-    <label for="tamañoTablero">Tamaño del tablero:</label>
-    <input type="number" id="tamañoTablero" min="1" max="7" value="2">
+    <div class="ficha" data-ficha></div> -->
+    <header>
+        <article class="header-container">
+            <h1>Juego Tablero</h1>
+            <section class="reglas">
+                <p> Selecciona el tamaño del tablero y de las fichas, pulsa “Iniciar juego” y arrastra las fichas para
+                    intercambiarlas. Tu objetivo es conseguir que <span>cada fila tenga fichas del mismo color</span>. ¡Usa tu estrategia,
+                    combina colores y completa el tablero! </p>
+            </section>
+            <section class="configuracion">
+                <label for="tamañoFicha">Tamaño de la ficha:</label>
+                  <select id="tamañoFicha">
+                    <option value="pequeña">Pequeña</option>
+                    <option value="mediana">Mediana</option>
+                    <option value="grande">Grande</option>
+                  </select>
+                <label for="tamañoTablero">Tamaño del tablero:</label>
+                <input type="number" id="tamañoTablero" min="1" max="7" value="2">
+            </section>
+            <button id="inicio">Iniciar juego</button>
+        </article>
+    </header>
+
+    <main>
+    </main>
+    
 
   </body>
 </html>
