@@ -9,18 +9,11 @@
 
 :root {
     --tono: 100;
-    --color-fondo-primario: hsl(100, 50%, 85%); /* hsl(100, 38%, 85%) */
-    --color-fondo-secundario: hsl(100, 38%, 90%);
-    /* --color-fondo-secundario: hsl(100, 38%, 85%); */
-    /* --color-fondo-secundario: hsl(100, 20%, 50%); */
-    /* --color-fondo-terciario: hsl(100, 38%, 20%); */
-    /* --color-fondo-terciario: hsl(290, 20%, 50%); */
+    --color-fondo-primario: hsl(var(--tono), 50%, 85%); /* hsl(100, 38%, 85%) */
+    --color-fondo-secundario: hsl(var(--tono), 38%, 90%);
 
-    /* --tono: 36;
-    --color-primario: hsl(var(--tono), 100%, 89%);
-    --color-secundario: hsl(var(--tono), 100%, 30%) */;
-    --color-primario: hsl(102, 18%, 56%);
-    --color-secundario: hsl(100, 7%, 50%);
+    --color-primario: hsl(calc(var(--tono) + 2), 18%, 56%);
+    --color-secundario: hsl(var(--tono), 7%, 50%);
 
 
     --font-family-principal: montserrat, sans-serif;
@@ -35,7 +28,7 @@
 }
 
 body {
-    font-family: var(--font-family-principal), sistem-ui, sans-serif;
+    font-family: var(--font-family-principal), sans-serif;
     font-size: 16px;
     color: var(--font-color);
     
