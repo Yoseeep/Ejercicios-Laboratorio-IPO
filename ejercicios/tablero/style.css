@@ -8,38 +8,58 @@
 }
 
 :root {
-    --tono: 100;
-    --color-fondo-primario: hsl(100, 50%, 85%); /* hsl(100, 38%, 85%) */
-    --color-fondo-secundario: hsl(100, 38%, 90%);
-    /* --color-fondo-secundario: hsl(100, 38%, 85%); */
-    /* --color-fondo-secundario: hsl(100, 20%, 50%); */
-    /* --color-fondo-terciario: hsl(100, 38%, 20%); */
-    /* --color-fondo-terciario: hsl(290, 20%, 50%); */
-
-    /* --tono: 36;
-    --color-primario: hsl(var(--tono), 100%, 89%);
-    --color-secundario: hsl(var(--tono), 100%, 30%) */;
-    --color-primario: hsl(102, 18%, 56%);
-    --color-secundario: hsl(100, 7%, 50%);
+    --tono: 200;
+    --color-primario: hsl(200, 80%, 20%);
+    --color-secundario: hsl(215, 85%, 35%);
+    --color-terciario: hsl(187, 100%, 58%);
 
 
     --font-family-principal: montserrat;
 
-    --font-color: hsl(100, 0%, 15%);
+    --font-color: hsl(var(--tono), 0%, 15%);
 
     scrollbar-width: thin;
-    scrollbar-color: var(--color-fondo-secundario) var(--color-primario);
+    scrollbar-color: var(--color-secundario) var(--color-primario);
     scrollbar-gutter: both-edges;
     scroll-behavior: smooth;
-
 }
 
 body {
     font-family: var(--font-family-principal), sistem-ui, sans-serif;
     font-size: 16px;
     color: var(--font-color);
-
+    background: conic-gradient(from 45deg at 70% 70%,
+    hsl(calc(var(--tono) - 8), 80%, 19%) 0.000deg,
+    hsl(var(--tono), 83%, 26%) 27.692deg,
+    hsl(calc(var(--tono) + 2), 84%, 26%) 27.692deg,
+    hsl(calc(var(--tono) + 2), 84%, 26%) 55.385deg,
+    hsl(calc(var(--tono) + 8), 85%, 34%) 55.385deg,
+    hsl(calc(var(--tono) + 8), 85%, 34%) 83.077deg,
+    hsl(calc(var(--tono) + 10), 85%, 41%) 83.077deg,
+    hsl(calc(var(--tono) + 10), 85%, 41%) 110.769deg,
+    hsl(calc(var(--tono) + 11), 85%, 48%) 110.769deg,
+    hsl(calc(var(--tono) + 11), 85%, 48%) 138.462deg,
+    hsl(calc(var(--tono) + 11), 100%, 54%) 138.462deg,
+    hsl(calc(var(--tono) + 11), 100%, 54%) 166.154deg,
+    hsl(calc(var(--tono) + 7), 100%, 55%) 166.154deg,
+    hsl(calc(var(--tono) + 7), 100%, 55%) 193.846deg,
+    hsl(calc(var(--tono) + 3), 100%, 55%) 193.846deg,
+    hsl(calc(var(--tono) + 3), 100%, 55%) 221.538deg,
+    hsl(calc(var(--tono) - 2), 100%, 56%) 221.538deg,
+    hsl(calc(var(--tono) - 2), 100%, 56%) 249.231deg,
+    hsl(calc(var(--tono) - 7), 100%, 57%) 249.231deg,
+    hsl(calc(var(--tono) - 7), 100%, 57%) 276.923deg,
+    hsl(calc(var(--tono) - 13), 100%, 58%) 276.923deg,
+    hsl(calc(var(--tono) - 13), 100%, 58%) 304.615deg,
+    hsl(calc(var(--tono) - 19), 100%, 58%) 304.615deg,
+    hsl(calc(var(--tono) - 19), 100%, 58%) 332.308deg,
+    hsl(calc(var(--tono) - 20), 100%, 59%) 332.308deg 360.000deg);
+    position: relative;
+    min-height: 100dvh;
+    min-width: 100%;
 }
+
+/* HEADER */
 
 header  {
     font-size: 16px;
@@ -50,36 +70,22 @@ header  {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: conic-gradient(from 45deg at 70% 70%,
-                    rgba(10, 74, 89, 1.000) 0.000deg,
-                    rgba(10, 74, 89, 1.000) 27.692deg,
-                    rgba(11, 82, 124, 1.000) 27.692deg,
-                    rgba(11, 82, 124, 1.000) 55.385deg,
-                    rgba(13, 92, 159, 1.000) 55.385deg,
-                    rgba(13, 92, 159, 1.000) 83.077deg,
-                    rgba(16, 104, 194, 1.000) 83.077deg,
-                    rgba(16, 104, 194, 1.000) 110.769deg,
-                    rgba(18, 118, 227, 1.000) 110.769deg,
-                    rgba(18, 118, 227, 1.000) 138.462deg,
-                    rgba(21, 133, 255, 1.000) 138.462deg,
-                    rgba(21, 133, 255, 1.000) 166.154deg,
-                    rgba(24, 150, 255, 1.000) 166.154deg,
-                    rgba(24, 150, 255, 1.000) 193.846deg,
-                    rgba(28, 169, 255, 1.000) 193.846deg,
-                    rgba(28, 169, 255, 1.000) 221.538deg,
-                    rgba(31, 188, 255, 1.000) 221.538deg,
-                    rgba(31, 188, 255, 1.000) 249.231deg,
-                    rgba(35, 209, 255, 1.000) 249.231deg,
-                    rgba(35, 209, 255, 1.000) 276.923deg,
-                    rgba(39, 230, 255, 1.000) 276.923deg,
-                    rgba(39, 230, 255, 1.000) 304.615deg,
-                    rgba(43, 251, 255, 1.000) 304.615deg,
-                    rgba(43, 251, 255, 1.000) 332.308deg,
-                    rgba(47, 255, 255, 1.000) 332.308deg 360.000deg);
+    position: absolute;
+    left: 0;
+}
+
+.header--visible {
+    top: 0;
+    transition: top .5s ease-in-out;
+}
+.header--noVisible {
+    top: -100dvh;
+    transition: top .5s ease-in-out;
 }
 
 
-.header-container {
+
+.menu-container {
     padding: 50px;
     display: flex;
     flex-direction: column;
@@ -87,7 +93,7 @@ header  {
     align-items: center;
     gap: 20px;
     border-radius: 15px;
-    background: rgba(255, 255, 255, .3);
+    background: rgba(255, 255, 255, .45);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     border: 2px solid rgba(209, 213, 219, 0.3);
@@ -124,13 +130,104 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 10px;
+    align-items: stretch;
+    gap: 20px;
     border-radius: 15px;
-    padding: 15px 20px;
+    padding: 20px 25px;
     border: 2px dashed var(--font-color);
+    & .opcion {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        & label {
+            color: var(--font-color);
+        }
+        & select, input {
+            font-family: var(--font-family-principal), serif;
+            font-weight: 400;
+            font-size: 0.95em;
+            padding: 5px 10px;
+            border-radius: 10px;
+            width: 100%;
+            border: 1px solid var(--font-color);
+            background: rgba(255, 255, 255, .6);
+            &:focus {
+                outline: 2px solid var(--color-secundario);
+                box-shadow: 0 0 5px var(--color-primario);
+            }
+        }
+        & select option {
+            background: hsl(201, 94%, 94%);
+            color: var(--font-color);
+            font-size: 1em;
+        }
+    }
 }
 
+.boton-inicio {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.2em;
+    letter-spacing: .1em;
+    word-spacing: .25em;
+    color: hsl(0, 0%, 93%);
+    background: var(--color-secundario); /*rgba(255, 255, 255, .3);*/
+    border: 2px solid var(--color-primario);
+    border-radius: 25px;
+    padding: .6em 1.3em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        background-color: var(--color-terciario);
+        box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+        color: var(--font-color); /*hsl(0, 0%, 93%);*/
+        scale: 1.05;
+        transition: scale .2s ease-in-out;
+    }
+    &:active {
+        scale: 0.95;
+        transition: scale .08s ease-in-out;
+    }
+    position: relative;
+    transition: background-color .2s ease-in-out;
+}
+
+
+
+/* MAIN */
+/*main  {
+    font-size: 16px;
+    min-height: 100dvh;
+    min-width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}*/
+
+
+/*.menu-container {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, .45);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(209, 213, 219, 0.3);
+}*/
 
 
 .ficha {

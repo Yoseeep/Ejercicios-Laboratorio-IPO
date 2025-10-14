@@ -18,29 +18,48 @@
     <div class="ficha" data-ficha></div>
     <div class="ficha" data-ficha></div>
     <div class="ficha" data-ficha></div> -->
-    <header>
-        <article class="header-container">
+    <header id="header" class="header--visible">
+        <article class="menu-container">
             <h1>Juego Tablero</h1>
             <section class="reglas">
                 <p> Selecciona el tamaño del tablero y de las fichas, pulsa “Iniciar juego” y arrastra las fichas para
                     intercambiarlas. Tu objetivo es conseguir que <span>cada fila tenga fichas del mismo color</span>. ¡Usa tu estrategia,
                     combina colores y completa el tablero! </p>
             </section>
-            <section class="configuracion">
-                <label for="tamañoFicha">Tamaño de la ficha:</label>
-                  <select id="tamañoFicha">
-                    <option value="pequeña">Pequeña</option>
-                    <option value="mediana">Mediana</option>
-                    <option value="grande">Grande</option>
-                  </select>
-                <label for="tamañoTablero">Tamaño del tablero:</label>
-                <input type="number" id="tamañoTablero" min="1" max="7" value="2">
-            </section>
-            <button id="inicio">Iniciar juego</button>
+            <form class="configuracion">
+                <div class="opcion">
+                    <label for="tamañoTablero">Tamaño del tablero:</label>
+                    <input type="number" id="tamañoTablero" min="2" max="7" value="4">
+                </div>
+                <div class="opcion">
+                    <label for="tamañoFicha">Tamaño de la ficha:</label>
+                    <select id="tamañoFicha">
+                        <option value="pequeña">Pequeña</option>
+                        <option value="mediana" selected>Mediana</option>
+                        <option value="grande">Grande</option>
+                    </select>
+                </div>
+                <div class="opcion">
+                    <label for="formaFicha">Forma de la ficha:</label>
+                    <select id="formaFicha">
+                        <option value="circulo">Círculo</option>
+                        <option value="cuadrado">Cuadrado</option>
+                        <option value="triangulo">Triángulo</option>
+                        <option value="hexagono">Hexágono</option>
+                    </select>
+                </div>
+            </form>
+            <button id="inicio" class="boton-inicio">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-player-play"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" /></svg>
+                Iniciar juego
+            </button>
         </article>
     </header>
 
     <main>
+        <div class="tablero">
+
+        </div>
     </main>
     
 
