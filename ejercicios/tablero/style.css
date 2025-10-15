@@ -7,6 +7,12 @@
   initial-value: 2;
 }
 
+@property --tamañoFicha {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 100px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -240,8 +246,8 @@ h1 {
 
 main  {
     font-size: 16px;
-    min-height: 100dvh;
-    min-width: 100%;
+    height: 100%;
+    width: 100%;
     padding: 15px;
     display: flex;
     gap: 20px;
@@ -251,6 +257,7 @@ main  {
     position: absolute;
     top: 0;
     left: 100%;
+    overflow: scroll;
     transition: left .5s ease-in-out;
 }
 .main--visible {
@@ -270,15 +277,27 @@ main  {
     grid-template-rows: repeat(var(--tamañoTablero), 1fr);
     grid-template-columns: repeat(var(--tamañoTablero), 1fr);
     gap: 40px 10px;
+    overflow: scroll;
 }
 
 
 .tablero__casilla  {
     border-radius: 12px;
-    padding: 25px;
+    padding: 15px;
     color: green;
 }
 
+.ficha {
+    width: var(--tamañoFicha);
+    height: var(--tamañoFicha);
+    background-color: transparent;
+    & svg {
+        height: 100%;
+        width: 100%;
+        transform: scale(1.15);
+        filter: drop-shadow(0px 0px 10px hsla(0,0%,0%, .3));
+    }
+}
 
 
 
@@ -299,9 +318,5 @@ main  {
 }*/
 
 
-.ficha {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    border: 1px solid black;
-}
+
+
