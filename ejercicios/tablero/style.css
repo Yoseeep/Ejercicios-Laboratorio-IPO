@@ -86,7 +86,7 @@ body {
 .glassmorphism__secondary {
     background: linear-gradient(190deg, rgba(209, 213, 219,0.1)60%, rgba(209, 213, 219,0.7) /*red*/ 100%);
     box-shadow: 0 0 40px -6px rgba(0,0,0,0.2);
-    backdrop-filter: blur(4.9px);
+    backdrop-filter: blur(5px);
 }
 
 
