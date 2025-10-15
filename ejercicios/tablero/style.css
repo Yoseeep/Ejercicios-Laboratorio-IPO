@@ -24,6 +24,9 @@
 
     --font-color: hsl(var(--tono), 0%, 15%);
 
+    --tono-atencion: 0;
+    --color-atencion: hsl(var(--tono-atencion), 65%, 50%);
+
     scrollbar-width: thin;
     scrollbar-color: var(--color-secundario) var(--color-primario);
     scrollbar-gutter: auto; /*both-edges*/
@@ -110,7 +113,6 @@ header  {
 }
 
 
-
 .menu-container {
     padding: 50px;
     display: flex;
@@ -188,6 +190,37 @@ h1 {
     }
 }
 
+.boton-accion {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.2em;
+    letter-spacing: .1em;
+    word-spacing: .25em;
+    /*color: hsl(0, 0%, 93%);
+    background: var(--color-secundario);*/ /*rgba(255, 255, 255, .3);*/
+    border: 2px solid var(--color-primario);
+    border-radius: 25px;
+    padding: .6em 1.3em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        /*background-color: var(--color-terciario);
+        color: var(--font-color);*/ /*hsl(0, 0%, 93%);*/
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        scale: 1.05;
+        transition: scale .2s ease-in-out;
+    }
+    &:active {
+        scale: 0.95;
+        transition: scale .08s ease-in-out;
+    }
+    position: relative;
+    transition: background-color .2s ease-in-out;
+}
+
 .boton-inicio {
     font-family: inherit;
     font-weight: 600;
@@ -219,6 +252,26 @@ h1 {
     transition: background-color .2s ease-in-out;
 }
 
+.boton-cancelar {
+    font-weight: 600;
+    font-size: 1em;
+    color: hsl(0, 0%, 93%);
+    background: var(--color-atencion);
+    border: 2px solid black;
+    padding: .6em 1.3em;
+    &:hover {
+        background-color: hsl(var(--tono-atencion), 100%, 50%);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        scale: 1.05;
+        transition: scale .2s ease-in-out;
+    }
+    &:active {
+        scale: 0.95;
+        transition: scale .08s ease-in-out;
+    }
+    position: relative;
+    transition: background-color .2s ease-in-out;
+}
 
 
 /* MAIN */
