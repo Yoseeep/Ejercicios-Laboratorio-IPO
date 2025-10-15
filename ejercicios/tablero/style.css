@@ -67,6 +67,23 @@ body {
     width: 100dvw;
 }
 
+/* Estilo común: Glassmorphism */
+.glassmorphism__primary {
+    background: rgba(255, 255, 255, .45);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(209, 213, 219, 0.3);
+}
+/* Estilo común: Glassmorphism oscuro*/
+.glassmorphism__secondary {
+    /*background: rgba(0,0,0,0.2);*/
+    background: linear-gradient(190deg, rgba(209, 213, 219,0.1)60%, rgba(209, 213, 219,0.7) /*red*/ 100%);
+    box-shadow: 0 0 40px -6px rgba(0,0,0,0.2);
+    /*box-shadow: inset 0 0 5px 3px hsla(255,0%,80%,50%);*/
+    backdrop-filter: blur(4.9px);
+}
+
+
 /* HEADER */
 
 header  {
@@ -102,10 +119,6 @@ header  {
     align-items: center;
     gap: 20px;
     border-radius: 15px;
-    background: rgba(255, 255, 255, .45);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    border: 2px solid rgba(209, 213, 219, 0.3);
 }
 
 h1 {
@@ -193,7 +206,7 @@ h1 {
     align-items: center;
     &:hover {
         background-color: var(--color-terciario);
-        box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
         color: var(--font-color); /*hsl(0, 0%, 93%);*/
         scale: 1.05;
         transition: scale .2s ease-in-out;
@@ -222,8 +235,16 @@ main  {
     align-items: center;
     position: absolute;
     top: 0;
+    left: 100%;
+    transition: left .5s ease-in-out;
+}
+.main--visible {
     left: 0;
-    z-index: -2;
+    transition: left .5s ease-in-out;
+}
+.main--noVisible {
+    left: 100%;
+    transition: left .5s ease-in-out;
 }
 
 .tablero {
@@ -234,20 +255,19 @@ main  {
     grid-template-rows: repeat(var(--numCasillas), 1fr);
     grid-template-columns: repeat(var(--numCasillas), 1fr);
     gap: 40px 10px;
-    background: rgba(0,0,0,0.3);
+    /*background: rgba(0,0,0,0.3);
     box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);
-    backdrop-filter: blur(4.9px);
+    backdrop-filter: blur(4.9px);*/
 }
 
 
 .tablero__casilla  {
     border-radius: 12px;
     padding: 25px;
-    background: hsla(255,0%,100%,40%);
+    /*background: hsla(255,0%,100%,40%);
     filter: brightness(100%);
-    /*box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);*/
     box-shadow: inset 0 0 5px 5px hsla(255,0%,70%,20%);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);*/
 }
 
 
