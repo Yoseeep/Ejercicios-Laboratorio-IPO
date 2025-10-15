@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script defer src="script.js"></script>
+    <script type="module" defer src="script.js"></script>
+    <script type="module" defer src="utils.js"></script>
   </head>
 
   <body>
@@ -19,7 +20,7 @@
     <div class="ficha" data-ficha></div>
     <div class="ficha" data-ficha></div> -->
     <header id="header" class="header--visible">
-        <article class="menu-container">
+        <article class="menu-container glassmorphism__primary">
             <h1>Juego Tablero</h1>
             <section class="reglas">
                 <p> Selecciona el tamaño del tablero y de las fichas, pulsa “Iniciar juego” y arrastra las fichas para
@@ -49,16 +50,38 @@
                     </select>
                 </div>
             </form>
-            <button id="inicio" class="boton-inicio">
+            <button id="inicio" class="boton-accion boton-inicio">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-player-play"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" /></svg>
                 Iniciar juego
             </button>
         </article>
     </header>
 
-    <main>
-        <div class="tablero">
+    <main id="main" class="main--noVisible">
+        <button id="cancelar" class="boton-accion boton-cancelar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M10 10l4 4m0 -4l-4 4" /></svg>
+            Cancelar juego
+        </button>
+        <div id="tablero" class="tablero glassmorphism__primary">
+            <div class="tablero__casilla glassmorphism__secondary">
+                <div class="ficha" draggable="true">
+                </div>
+            </div>
+            <div class="tablero__casilla glassmorphism__secondary">
+                <div class="ficha" draggable="true">
 
+                </div>
+            </div>
+            <div class="tablero__casilla glassmorphism__secondary">
+                <div class="ficha" draggable="true">
+
+                </div>
+            </div>
+            <div class="tablero__casilla glassmorphism__secondary">
+                <div class="ficha" draggable="true">
+
+                </div>
+            </div>
         </div>
     </main>
     
