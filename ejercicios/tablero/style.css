@@ -70,6 +70,7 @@ body {
     hsl(calc(var(--tono) - 19), 100%, 58%) 332.308deg,
     hsl(calc(var(--tono) - 20), 100%, 59%) 332.308deg 360.000deg);
     position: relative;
+    overflow: hidden;
     height: 100dvh;
     width: 100dvw;
 }
@@ -95,7 +96,7 @@ header  {
     font-size: 16px;
     height: 100dvh;
     width: 100%;
-    overflow: scroll;
+    overflow: auto;
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -257,7 +258,7 @@ main  {
     position: absolute;
     top: 0;
     left: 100%;
-    overflow: scroll;
+    overflow: auto;
     transition: left .5s ease-in-out;
 }
 .main--visible {
@@ -277,9 +278,13 @@ main  {
     grid-template-rows: repeat(var(--tamañoTablero), 1fr);
     grid-template-columns: repeat(var(--tamañoTablero), 1fr);
     gap: 40px 10px;
-    overflow: scroll;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: hsla(0,0%,70%,90%) transparent;
+    scrollbar-gutter: auto;
+    scroll-behavior: smooth;
+    scrollbar-arrow-color: transparent;
 }
-
 
 .tablero__casilla  {
     border-radius: 12px;
