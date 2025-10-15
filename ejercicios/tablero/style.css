@@ -1,7 +1,7 @@
 /* style.css */
 /* Proyecto Tablero */
 
-@property --numCasillas {
+@property --tamañoTablero {
   syntax: "<number>";
   inherits: true;
   initial-value: 2;
@@ -64,25 +64,21 @@ body {
     hsl(calc(var(--tono) - 19), 100%, 58%) 332.308deg,
     hsl(calc(var(--tono) - 20), 100%, 59%) 332.308deg 360.000deg);
     position: relative;
-    /*min-height: 100dvh;
-    min-width: 100%;*/
     height: 100dvh;
     width: 100dvw;
 }
 
-/* Estilo común: Glassmorphism */
+/* Estilo común: Glassmorphism primario*/
 .glassmorphism__primary {
     background: rgba(255, 255, 255, .45);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     border: 2px solid rgba(209, 213, 219, 0.3);
 }
-/* Estilo común: Glassmorphism oscuro*/
+/* Estilo común: Glassmorphism secundario*/
 .glassmorphism__secondary {
-    /*background: rgba(0,0,0,0.2);*/
     background: linear-gradient(190deg, rgba(209, 213, 219,0.1)60%, rgba(209, 213, 219,0.7) /*red*/ 100%);
     box-shadow: 0 0 40px -6px rgba(0,0,0,0.2);
-    /*box-shadow: inset 0 0 5px 3px hsla(255,0%,80%,50%);*/
     backdrop-filter: blur(4.9px);
 }
 
@@ -196,9 +192,6 @@ h1 {
     font-size: 1.2em;
     letter-spacing: .1em;
     word-spacing: .25em;
-    /*color: hsl(0, 0%, 93%);
-    background: var(--color-secundario);*/ /*rgba(255, 255, 255, .3);*/
-    border: 2px solid var(--color-primario);
     border-radius: 25px;
     padding: .6em 1.3em;
     display: flex;
@@ -207,9 +200,6 @@ h1 {
     justify-content: center;
     align-items: center;
     &:hover {
-        /*background-color: var(--color-terciario);
-        color: var(--font-color);*/ /*hsl(0, 0%, 93%);*/
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
         scale: 1.05;
         transition: scale .2s ease-in-out;
     }
@@ -217,60 +207,32 @@ h1 {
         scale: 0.95;
         transition: scale .08s ease-in-out;
     }
-    position: relative;
     transition: background-color .2s ease-in-out;
 }
 
 .boton-inicio {
-    font-family: inherit;
     font-weight: 600;
     font-size: 1.2em;
-    letter-spacing: .1em;
-    word-spacing: .25em;
     color: hsl(0, 0%, 93%);
-    background: var(--color-secundario); /*rgba(255, 255, 255, .3);*/
+    background: var(--color-secundario);
     border: 2px solid var(--color-primario);
-    border-radius: 25px;
-    padding: .6em 1.3em;
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    justify-content: center;
-    align-items: center;
     &:hover {
         background-color: var(--color-terciario);
         box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-        color: var(--font-color); /*hsl(0, 0%, 93%);*/
-        scale: 1.05;
-        transition: scale .2s ease-in-out;
+        color: var(--font-color);
     }
-    &:active {
-        scale: 0.95;
-        transition: scale .08s ease-in-out;
-    }
-    position: relative;
-    transition: background-color .2s ease-in-out;
 }
 
 .boton-cancelar {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1em;
     color: hsl(0, 0%, 93%);
     background: var(--color-atencion);
     border: 2px solid black;
-    padding: .6em 1.3em;
     &:hover {
         background-color: hsl(var(--tono-atencion), 100%, 50%);
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        scale: 1.05;
-        transition: scale .2s ease-in-out;
     }
-    &:active {
-        scale: 0.95;
-        transition: scale .08s ease-in-out;
-    }
-    position: relative;
-    transition: background-color .2s ease-in-out;
 }
 
 
@@ -305,22 +267,16 @@ main  {
     padding: 20px;
     display: grid;
     grid-template-areas: "c11 c12" "c21 c22";
-    grid-template-rows: repeat(var(--numCasillas), 1fr);
-    grid-template-columns: repeat(var(--numCasillas), 1fr);
+    grid-template-rows: repeat(var(--tamañoTablero), 1fr);
+    grid-template-columns: repeat(var(--tamañoTablero), 1fr);
     gap: 40px 10px;
-    /*background: rgba(0,0,0,0.3);
-    box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);
-    backdrop-filter: blur(4.9px);*/
 }
 
 
 .tablero__casilla  {
     border-radius: 12px;
     padding: 25px;
-    /*background: hsla(255,0%,100%,40%);
-    filter: brightness(100%);
-    box-shadow: inset 0 0 5px 5px hsla(255,0%,70%,20%);
-    backdrop-filter: blur(3px);*/
+    color: green;
 }
 
 
