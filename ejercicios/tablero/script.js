@@ -1,4 +1,4 @@
-import { barajarLista } from "./utils.js";
+import { barajarLista, posicionesArrayToGrid } from "./utils.js";
 
 const botonInicio = document.getElementById('inicio');
 const botonCancelar = document.getElementById('cancelar');
@@ -24,13 +24,13 @@ const tamañosFichas = {
 }
 
 const coloresFichas = [
-    '#e74c3c', // Rojo
-    '#3498db', // Azul
-    '#2ecc71', // Verde
-    '#edc223', // Amarillo
-    '#9b59b6', // Morado
-    '#ea7919', // Naranja
-    '#34495e'  // Gris oscuro
+    'color-1', // Rojo
+    'color-2', // Azul
+    'color-3', // Verde
+    'color-4', // Amarillo
+    'color-5', // Morado
+    'color-6', // Naranja
+    'color-7'  // Gris oscuro
 ];
 
 /* Variables globales */
@@ -38,6 +38,7 @@ let formaFicha = 'circulo';
 let tamañoTablero = document.documentElement.style.getPropertyValue('--tamañoTablero');
 let tamañoFicha = document.documentElement.style.getPropertyValue('--tamañoFicha');
 let coloresNecesarios = generaColoresNecesarios();
+let posicionesTablero = [];
 
 /* Event listeners */
 botonInicio.addEventListener('click', inicio);
@@ -73,7 +74,6 @@ function inicio(){
     estableceTamañoTablero();
     estableTamañoFicha();
     estableceFormaFichas();
-    coloresNecesarios = generaColoresNecesarios();
     dibujaTablero();
     ocultarHeader();
     mostrarMain();
@@ -124,12 +124,15 @@ function estableceFormaFichas() {
 
 function dibujaTablero() {
     tablero.innerHTML = "";
+    coloresNecesarios = generaColoresNecesarios();
+    posicionesTablero = generaCasillasPosibles();
+    tablero.style.gridTemplateAreas = posicionesArrayToGrid(posicionesTablero);
 
-
-    for (let i = 0; i < tamañoTablero * tamañoTablero; i++){
+    for (let posicion of posicionesTablero) {
+        let colorFicha = coloresNecesarios.pop();
         let formatoPieza =
-            `<div class="tablero__casilla glassmorphism__secondary"> 
-            <div class="ficha" draggable="true"> 
+            `<div class="tablero__casilla glassmorphism__secondary" data-drop data-fila="${posicion.fila}" data-columna="${posicion.columna}">
+            <div class="ficha ${colorFicha}" draggable="true" data-color="${colorFicha} data-fila="${posicion.fila}" data-columna="${posicion.columna}"> 
                ${formasFichas[formaFicha]}  
             </div> 
         </div>`;
@@ -147,3 +150,14 @@ function generaColoresNecesarios() {
     };
     return barajarLista(colores);
 }
+
+function generaCasillasPosibles() {
+    const casillas = [];
+    for (let fila = 1; fila <= tamañoTablero; fila++) {
+        for (let columna = 1; columna <= tamañoTablero; columna++) {
+            casillas.push({ fila, columna });
+        }
+    }
+    return casillas;
+}
+
