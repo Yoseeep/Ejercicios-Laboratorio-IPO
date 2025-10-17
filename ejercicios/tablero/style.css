@@ -288,8 +288,12 @@ main  {
 .tablero__casilla  {
     border-radius: 12px;
     padding: 15px;
-    color: green;
 }
+.tablero__casilla--dragover {
+    outline-style: dashed;
+    outline-color: var(--font-color);
+}
+
 
 .ficha {
     width: var(--tamañoFicha);
@@ -301,6 +305,11 @@ main  {
         transform: scale(1.15);
         filter: drop-shadow(0px 0px 7px hsla(0,0%,0%, .3));
     }
+}
+.ficha--dragstart {
+    opacity: 0.5;
+    transform: scale(0.9);
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
 }
 
 .color-1 {

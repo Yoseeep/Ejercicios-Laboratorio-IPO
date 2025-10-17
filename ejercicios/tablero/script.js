@@ -8,7 +8,9 @@ const inputTamañoTablero = document.getElementById('tamañoTablero');
 const selectFormaFicha = document.getElementById('formaFicha');
 const selectTamañoFicha = document.getElementById('tamañoFicha');
 const tablero = document.getElementById('tablero');
-
+// Se actualizan:
+let casillas = document.querySelectorAll('.tablero__casilla');
+let fichas = document.querySelectorAll('.ficha');
 
 const formasFichas = {
     'circulo': '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"icon icon-tabler icons-tabler-filled icon-tabler-circle\"><path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z\" /></svg>',
@@ -55,6 +57,10 @@ inputTamañoTablero.addEventListener('keydown', (e) => {
     }
 })
 
+
+/*fichas.forEach(ficha => ficha.addEventListener('dragstart',dragstartFicha));*/
+
+
 /* Validaciones */
 function validaTamañoTablero() {
     if ( Number(inputTamañoTablero.value) < Number(inputTamañoTablero.min) ) {
@@ -75,6 +81,11 @@ function inicio(){
     estableTamañoFicha();
     estableceFormaFichas();
     dibujaTablero();
+    estableceFichas();
+    estableceCasillas();
+    estableceEventosFichas();
+    estableceEventosCasillas();
+
     ocultarHeader();
     mostrarMain();
 }
@@ -114,12 +125,12 @@ function estableceTamañoTablero() {
 function estableTamañoFicha() {
     tamañoFicha = tamañosFichas[ selectTamañoFicha.value ];
     document.documentElement.style.setProperty('--tamañoFicha', tamañoFicha);
-    console.log(selectTamañoFicha.value);
+    console.log(selectTamañoFicha.value); //lo puedo quitar
 }
 
 function estableceFormaFichas() {
     formaFicha = selectFormaFicha.value;
-    console.log(formaFicha);
+    console.log(formaFicha); //lo puedo quitar
 }
 
 function dibujaTablero() {
@@ -131,8 +142,8 @@ function dibujaTablero() {
     for (let posicion of posicionesTablero) {
         let colorFicha = coloresNecesarios.pop();
         let formatoPieza =
-            `<div class="tablero__casilla glassmorphism__secondary" data-drop data-fila="${posicion.fila}" data-columna="${posicion.columna}">
-            <div class="ficha ${colorFicha}" draggable="true" data-color="${colorFicha} data-fila="${posicion.fila}" data-columna="${posicion.columna}"> 
+            `<div class="tablero__casilla glassmorphism__secondary" data-drop data-filacasilla ="${posicion.fila}" data-columnacasilla="${posicion.columna}">
+            <div class="ficha ${colorFicha}" draggable="true" data-color="${colorFicha}" data-filaficha="${posicion.fila}" data-columnaficha="${posicion.columna}"> 
                ${formasFichas[formaFicha]}  
             </div> 
         </div>`;
@@ -159,5 +170,94 @@ function generaCasillasPosibles() {
         }
     }
     return casillas;
+}
+
+function estableceFichas() {
+    fichas = document.querySelectorAll('.ficha');
+}
+
+function estableceCasillas() {
+    casillas = document.querySelectorAll('.tablero__casilla');
+}
+
+function estableceEventosFichas(){
+    fichas.forEach(ficha => {
+        ficha.addEventListener('dragstart',dragstartFicha);
+        ficha.addEventListener('dragend',dragendFicha);
+    })
+}
+
+function estableceEventosCasillas(){
+    casillas.forEach(casilla => {
+        casilla.addEventListener('dragover',dragoverCasilla);
+        casilla.addEventListener('dragleave',dragleaveCasilla);
+        casilla.addEventListener('drop',dropCasilla);
+    })
+}
+
+function dragstartFicha(e) {
+    console.log('dragstart', e.target);
+    e.currentTarget.classList.toggle('ficha--dragstart');
+
+    const dragstartPosicion = {
+        filaficha: e.currentTarget.dataset.filaficha,
+        columnaficha: e.currentTarget.dataset.columnaficha
+    };
+    const dragstartPosicionJSON = JSON.stringify(dragstartPosicion);
+    e.dataTransfer.setData("application/json", dragstartPosicionJSON);
+}
+
+function dragendFicha(e) {
+    /*console.log('dragend', e.target);*/
+    e.target.classList.toggle('ficha--dragstart');
+}
+
+function dragoverCasilla(e) {
+    e.preventDefault();
+    /*console.log('dragover', e.target);*/
+    e.currentTarget.classList.add('tablero__casilla--dragover');
+}
+
+function dragleaveCasilla(e) {
+    /*console.log('dragleave', e.target);*/
+    e.currentTarget.classList.remove('tablero__casilla--dragover');
+}
+
+function dropCasilla(e) {
+    e.preventDefault();
+    console.log('dragdrop', e.target);
+    e.currentTarget.classList.remove('tablero__casilla--dragover');
+
+    const dragstartPosicionJSON = e.dataTransfer.getData("application/json");
+    const dragstartPosicion = JSON.parse(dragstartPosicionJSON);
+    const dropPosicion = {
+        filacasilla: e.currentTarget.dataset.filacasilla,
+        columnacasilla: e.currentTarget.dataset.columnacasilla
+    };
+
+    const fichaOrigen = document.querySelector(`.ficha[data-filaficha="${dragstartPosicion.filaficha}"][data-columnaficha="${dragstartPosicion.columnaficha}"]`);
+    const fichaDestino = document.querySelector(`.ficha[data-filaficha="${dropPosicion.filacasilla}"][data-columnaficha="${dropPosicion.columnacasilla}"]`);
+    intercambiaFichas(fichaOrigen, fichaDestino);
+
+    estableceFichas();
+}
+
+function intercambiaFichas(fichaOrigen, fichaDestino) {
+    const filaOrigen = fichaOrigen.dataset.filaficha;
+    const columnaOrigen = fichaOrigen.dataset.columnaficha;
+    const filaDestino = fichaDestino.dataset.filaficha;
+    const columnaDestino = fichaDestino.dataset.columnaficha;
+
+    fichaOrigen.dataset.filaficha = filaDestino;
+    fichaOrigen.dataset.columnaficha = columnaDestino;
+    fichaDestino.dataset.filaficha = filaOrigen;
+    fichaDestino.dataset.columnaficha = columnaOrigen;
+
+    const padreOrigen = fichaOrigen.parentElement;
+    const padreDestino = fichaDestino.parentElement;
+
+    padreOrigen.appendChild(fichaDestino);
+    padreDestino.appendChild(fichaOrigen);
+    console.log(fichas);
 }
 
