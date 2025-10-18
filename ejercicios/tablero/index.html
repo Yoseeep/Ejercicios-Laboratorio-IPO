@@ -23,8 +23,8 @@
         <article class="menu-container glassmorphism__primary">
             <h1>Juego Tablero</h1>
             <section class="reglas">
-                <p> Selecciona el tamaño del tablero y de las fichas, pulsa “Iniciar juego” y arrastra las fichas para
-                    intercambiarlas. Tu objetivo es conseguir que <span>cada fila tenga fichas del mismo color</span>. ¡Usa tu estrategia,
+                <p> Selecciona el tamaño del tablero y de las fichas junto con sus formas, pulsa “Iniciar juego” y arrastra las fichas para
+                    intercambiarlas. Tu <span>objetivo</span> es conseguir que <span>cada fila tenga fichas del mismo color</span>. ¡Usa tu estrategia,
                     combina colores y completa el tablero! </p>
             </section>
             <form class="configuracion">
@@ -81,6 +81,18 @@
                 <div class="ficha" draggable="true">
 
                 </div>
+            </div>
+        </div>
+        <div id="finModal" class="main__modal main__modal--noVisible glassmorphism__primary">
+            <div class="main__modal__contenido glassmorphism__primary">
+                <h2 class="main__modal__titulo">¡Felicidades!</h2>
+                <p class="main__modal__mensaje">Has completado el juego.</p>
+                <button id="volverAlMenu" class="boton-accion boton-volverAlMenu ">
+                    <span class="boton-volverAlMenu__contenido">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 8l-4 4l4 4m4 -8l-4 4l4 4" /></svg>
+                        Volver al menú
+                    </span>
+                </button>
             </div>
         </div>
     </main>

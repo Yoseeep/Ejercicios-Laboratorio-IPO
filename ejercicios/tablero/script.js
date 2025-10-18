@@ -7,6 +7,8 @@ const main = document.getElementById('main');
 const inputTamañoTablero = document.getElementById('tamañoTablero');
 const selectFormaFicha = document.getElementById('formaFicha');
 const selectTamañoFicha = document.getElementById('tamañoFicha');
+const finModal = document.getElementById('finModal');
+const botonVolverAlMenu = document.getElementById('volverAlMenu');
 const tablero = document.getElementById('tablero');
 // Se actualizan:
 let casillas = document.querySelectorAll('.tablero__casilla');
@@ -45,7 +47,7 @@ let posicionesTablero = [];
 /* Event listeners */
 botonInicio.addEventListener('click', inicio);
 botonCancelar.addEventListener('click', cancelar);
-
+botonVolverAlMenu.addEventListener('click', volverAlMenu);
 
 inputTamañoTablero.addEventListener('change',validaTamañoTablero);
 inputTamañoTablero.addEventListener('keydown', (e) => {
@@ -58,7 +60,6 @@ inputTamañoTablero.addEventListener('keydown', (e) => {
 })
 
 
-/*fichas.forEach(ficha => ficha.addEventListener('dragstart',dragstartFicha));*/
 
 
 /* Validaciones */
@@ -85,6 +86,7 @@ function inicio(){
     estableceCasillas();
     estableceEventosFichas();
     estableceEventosCasillas();
+    if (compruebaTableroCompleto()) setTimeout(mostrarFinModal, 350); // Por si acaso ya está completo
 
     ocultarHeader();
     mostrarMain();
@@ -95,6 +97,11 @@ function cancelar(){
     mostrarHeader();
 }
 
+function volverAlMenu(){
+    ocultarFinModal();
+    ocultarMain();
+    mostrarHeader();
+}
 
 function ocultarHeader() {
     header.classList.add('header--noVisible');
@@ -106,6 +113,11 @@ function ocultarMain() {
     main.classList.remove('main--visible');
 }
 
+function ocultarFinModal() {
+    finModal.classList.add('main__modal--noVisible');
+    finModal.classList.remove('main__modal--visible');
+}
+
 function mostrarHeader() {
     header.classList.add('header--visible');
     header.classList.remove('header--noVisible');
@@ -114,6 +126,11 @@ function mostrarHeader() {
 function mostrarMain() {
     main.classList.add('main--visible');
     main.classList.remove('main--noVisible');
+}
+
+function mostrarFinModal() {
+    finModal.classList.add('main__modal--visible');
+    finModal.classList.remove('main__modal--noVisible');
 }
 
 
@@ -159,7 +176,11 @@ function generaColoresNecesarios() {
             colores.push(color);
         }
     };
-    return barajarLista(colores);
+    let coloresBarajados = barajarLista(colores);
+    while (compruebaColoresOrdenados(coloresBarajados)) {
+        coloresBarajados = barajarLista(coloresBarajados);
+    }
+    return coloresBarajados;
 }
 
 function generaCasillasPosibles() {
@@ -239,7 +260,8 @@ function dropCasilla(e) {
     const fichaDestino = document.querySelector(`.ficha[data-filaficha="${dropPosicion.filacasilla}"][data-columnaficha="${dropPosicion.columnacasilla}"]`);
     intercambiaFichas(fichaOrigen, fichaDestino);
 
-    estableceFichas();
+    estableceFichas(); //Actualizamos
+    if (compruebaTableroCompleto()) setTimeout(mostrarFinModal, 350);
 }
 
 function intercambiaFichas(fichaOrigen, fichaDestino) {
@@ -258,6 +280,43 @@ function intercambiaFichas(fichaOrigen, fichaDestino) {
 
     padreOrigen.appendChild(fichaDestino);
     padreDestino.appendChild(fichaOrigen);
-    console.log(fichas);
 }
+
+function compruebaTableroCompleto() {
+    let tableroCorrecto = true;
+    const agrupadasPorFila = Object.values(
+        Object.groupBy( fichas, ficha => ficha.dataset.filaficha )
+    );
+    let colorFila = null;
+    for (let fila of agrupadasPorFila) {
+        for (let elemento = 0; elemento < fila.length; elemento++) {
+            const ficha = fila[elemento];
+            if (elemento === 0) {
+                colorFila = ficha.dataset.color;
+            } else {
+                if (ficha.dataset.color !== colorFila) {
+                    tableroCorrecto = false;
+                    break;
+                }
+            }
+        }
+    }
+    return tableroCorrecto;
+}
+
+
+function compruebaColoresOrdenados(listaColores) {
+    const n = Number(tamañoTablero);
+    if (!Number.isFinite(n) || n <= 0) return false;
+
+    for (let i = 0; i < listaColores.length; i += n) {
+        const referencia = listaColores[i];
+        for (let j = 1; j < n; j++) {
+            if (listaColores[i + j] !== referencia) return false;
+        }
+    }
+    return true;
+}
+
+
 
