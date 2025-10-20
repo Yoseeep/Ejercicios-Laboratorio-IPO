@@ -22,7 +22,7 @@
 
     scrollbar-width: thin;
     scrollbar-color: var(--color-fondo-secundario) var(--color-primario);
-    scrollbar-gutter: both-edges;
+    scrollbar-gutter: auto;
     scroll-behavior: smooth;
     
 }
@@ -126,7 +126,7 @@ h1 {
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
-    font-size: 1.2rem;   
+    font-size: 1.2rem;
 }
 
 .interaccion__referencia {
