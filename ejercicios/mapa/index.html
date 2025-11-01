@@ -7,8 +7,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script defer src="script.js"></script>
 </head>
 <body>
+    <aside class="filters">
+        <h2 class="filters__title">Filtros</h2>
+        <ul class="filters__list">
+            <li class="filters__item">
+                <input type="checkbox" id="filter-museum" data-type="museum" checked>
+                <label for="filter-museum">Museos</label>
+            </li>
+            <li class="filters__item">
+                <input type="checkbox" id="filter-jewelry" data-type="jewelry" checked>
+                <label for="filter-jewelry">Joyerías</label>
+            </li>
+            <li class="filters__item">
+                <input type="checkbox" id="filter-supermarket" data-type="supermarket" checked>
+                <label for="filter-supermarket">Supermercados</label>
+            </li>
+            <li class="filters__item">
+                <input type="checkbox" id="filter-hospital" data-type="hospital" checked>
+                <label for="filter-hospital">Hospitales</label>
+            </li>
+        </ul>
+    </aside>
+    <button id="filters-toggle" class="filters-toggle">
+        <svg class="filters-toggle__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6h16" /><path d="M6 12h12" /><path d="M9 18h6" /></svg>
+    </button>
+
     <main class="mapa-container">
         <img class="mapa-img" src="img/mapa.png" alt="Mapa">
 
