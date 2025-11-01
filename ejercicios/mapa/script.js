@@ -1,4 +1,4 @@
-const museo = document.getElementById('museo');
+const museo = document.getElementById('1');
 
 
 /*
