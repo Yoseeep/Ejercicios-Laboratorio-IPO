@@ -32,6 +32,7 @@ body {
     min-height: 100dvh;
     min-width: 100dvw;
     font-family: var(--font-family), sans-serif;
+    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,12 +67,12 @@ body {
     right: 2.5%;
     bottom: 4%;
     pointer-events: none;
-    .mapa__coordinates__icon {
-        width: 100%;
-        height: 100%;
-    }
 }
 
+.mapa__coordinates__icon {
+    width: 100%;
+    height: 100%;
+}
 
 .location {
     position: absolute;
@@ -91,49 +92,58 @@ body {
     position: relative;
     z-index: 50;
     transition: transform 0.2s ease-in-out;
-    .location__icon__background {
-        position: absolute;
-        width: 89.5%;
-        height: 90%;
-        top: 4%;
-        left: 4.5%;
-        z-index: 70;
-        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 1));
-    }
-    .location__icon__figure {
-        position: absolute;
-        width: 45%;
-        height: 45%;
-        z-index: 80;
-    }
-
-    .location__icon__figure--museum {
-        top: 18%;
-        left: 27.4%;
-    }
-    .location__icon__figure--jewelry {
-        top: 23%;
-        left: 27.4%;
-    }
-    .location__icon__figure--supermarket {
-        top: 23%;
-        left: 27%;
-    }
-    .location__icon__figure--hospital {
-        top: 18%;
-        left: 27.4%;
-    }
 }
 
+.location__icon__background {
+    position: absolute;
+    width: 89.5%;
+    height: 90%;
+    top: 4%;
+    left: 4.5%;
+    z-index: 70;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 1));
+}
+
+.location__icon__figure {
+    position: absolute;
+    width: 45%;
+    height: 45%;
+    z-index: 80;
+}
+
+.location__icon__figure--museum {
+    top: 18%;
+    left: 27.4%;
+}
+
+.location__icon__figure--jewelry {
+    top: 23%;
+    left: 27.4%;
+}
+
+.location__icon__figure--supermarket {
+    top: 23%;
+    left: 27%;
+}
+
+.location__icon__figure--hospital {
+    top: 18%;
+    left: 27.4%;
+}
 
 .location__icon:hover, .location:focus .location__icon {
     transform: scale(1.4) translateY(-10%);
     transition: transform 0.2s ease-in-out;
 }
 
+.location:focus .location__icon {
+    z-index: 90;
+}
+
 .location__info {
     display: none;
 }
+
 .location:focus .location__info {
     position: absolute;
     background-color: var(--bg-color-light);
@@ -147,99 +157,100 @@ body {
     gap: 0.9em;
     z-index: 100;
     text-align: left;
-
-    .location__info__title {
-        text-wrap: balance;
-        font-size: 1.7em;
-        font-weight: 800;
-        letter-spacing: .05em;
-        word-spacing: 0.15em;
-    }
-    .location__info__type {
-        font-size: 1.2em;
-        font-style: italic;
-        color: var(--text-color-muted);
-    }
-    .location__info__description {
-        font-size: 1.1em;
-        text-wrap: pretty;
-    }
-    .location__info__location {
-        font-size: 1.1em;
-        display: flex;
-        gap: 0.3em;
-        span {
-            font-weight: 600;
-        }
-    }
-    .location__info__timetable {
-        font-size: 1.1em;
-        display: flex;
-        gap: 0.3em;
-        span {
-            font-weight: 600;
-        }
-    }
 }
 
+.location:focus .location__info__title {
+    text-wrap: balance;
+    font-size: 1.7em;
+    font-weight: 800;
+    letter-spacing: .05em;
+    word-spacing: 0.15em;
+}
 
+.location:focus .location__info__type {
+    font-size: 1.2em;
+    font-style: italic;
+    color: var(--text-color-muted);
+}
+
+.location:focus .location__info__description {
+    font-size: 1.1em;
+    text-wrap: pretty;
+}
+
+.location:focus .location__info__location {
+    font-size: 1.1em;
+    display: flex;
+    gap: 0.3em;
+}
+
+.location:focus .location__info__location span {
+    font-weight: 600;
+}
+
+.location:focus .location__info__timetable {
+    font-size: 1.1em;
+    display: flex;
+    gap: 0.3em;
+}
+
+.location:focus .location__info__timetable span {
+    font-weight: 600;
+}
 
 [data-location-id="1"] {
     right: 3%;
     bottom: 25%;
-    &:focus .location__info {
-        top: -5em;
-        right: 7em;
-    }
 }
+[data-location-id="1"]:focus .location__info {
+    top: -5em;
+    right: 7em;
+}
+
 [data-location-id="2"] {
     left: 43%;
     bottom: 35%;
-    &:focus .location__info {
-        top: -18em;
-        left: -15em;
-    }
 }
+[data-location-id="2"]:focus .location__info {
+    top: -18em;
+    left: -15em;
+}
+
 [data-location-id="3"] {
     left: 88%;
     bottom: 53%;
-    &:focus .location__info {
-        top: -9em;
-        right: 7em;
-    }
 }
+[data-location-id="3"]:focus .location__info {
+    top: -9em;
+    right: 7em;
+}
+
 [data-location-id="4"] {
     left: 73%;
     top: 20%;
-    &:focus .location__info {
-        top: -9em;
-        right: 7em;
-    }
 }
+[data-location-id="4"]:focus .location__info {
+    top: -9em;
+    right: 7em;
+}
+
 [data-location-id="5"] {
     left: 43%;
     top: 8%;
-    &:focus .location__info {
-        top: 7em;
-        right: -7em;
-    }
 }
+[data-location-id="5"]:focus .location__info {
+    top: 7em;
+    right: -7em;
+}
+
 [data-location-id="6"] {
     left: 27%;
     top: 37%;
-    &:focus .location__info {
-        top: 7em;
-        right: -20em;
-    }
 }
-
-
-
-
-
-
-
-
+[data-location-id="6"]:focus .location__info {
+    top: 7em;
+    right: -20em;
+}
 
 .filters-toggle {
     position: fixed;
@@ -257,11 +268,11 @@ body {
     align-items: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     transition: transform 0.3s ease-in-out;
-    .filters-toggle__icon {
-        width: 70%;
-        height: 70%;
-    }
+}
 
+.filters-toggle__icon {
+    width: 70%;
+    height: 70%;
 }
 
 .filters {
@@ -282,16 +293,13 @@ body {
     transition: transform 0.3s ease-in-out;
 }
 
-
-
-.filters--visible {
+.filters.filters--visible {
     transform: translateX(0);
 }
 
-.filters--visible ~ .filters-toggle {
+.filters.filters--visible ~ .filters-toggle {
     transform: translateX(15rem);
 }
-
 
 .filters__title {
     font-size: 2em;
@@ -328,3 +336,35 @@ body {
     display: none;
 }
 
+@media (max-width: 600px) {
+    .location:focus .location__info {
+        transform: scale(0.6);
+        transform-origin: center;
+        z-index: 1000;
+        font-size: 25px;
+    }
+    [data-location-id="1"]:focus .location__info {
+        top: -12em;
+        right: -2em;
+    }
+    [data-location-id="2"]:focus .location__info {
+        top: -20em;
+        left: -10em;
+    }
+    [data-location-id="3"]:focus .location__info {
+        top: -9em;
+        right: -2em;
+    }
+    [data-location-id="4"]:focus .location__info {
+        top: -2em;
+        right: -5em;
+    }
+    [data-location-id="5"]:focus .location__info {
+        top: -2em;
+        right: -10em;
+    }
+    [data-location-id="6"]:focus .location__info {
+        top: -2em;
+        right: -10em;
+    }
+}
