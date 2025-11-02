@@ -348,7 +348,7 @@ body {
         right: -2em;
     }
     [data-location-id="2"]:focus .location__info {
-        top: -20em;
+        top: -19em;
         left: -10em;
     }
     [data-location-id="3"]:focus .location__info {
