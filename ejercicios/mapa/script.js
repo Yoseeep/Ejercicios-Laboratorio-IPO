@@ -14,7 +14,6 @@ filterCheckboxes.forEach(checkbox => {
 
 applyFilters();
 
-// Aplicar filtros al cambiar un checkbox
 function applyFilters() {
     const selectedTypes = Array.from(filterCheckboxes)
         .filter(checkbox => checkbox.checked)
