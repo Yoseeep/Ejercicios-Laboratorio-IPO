@@ -1,4 +1,4 @@
-* {
+*,*::before,*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,7 +17,7 @@
     --border-color: hsl(30, 21%, 48%);
     --border-color-muted: hsl(30, 27%, 60%);
 
-    --action-color-primary: hsl(37, 100%, 18%);
+    --action-color-primary: hsl(37, 35%, 41%);
     --action-color-secondary: hsl(205, 87%, 26%);
 
     --alert-color-danger: hsl(9, 21%, 41%);
@@ -34,8 +34,58 @@ body {
     font-family: var(--font-family), sans-serif;
     font-size: 16px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* align-items: stretch; */
+    gap: 20px;
     padding: 10px;
     background-color: var(--bg-color-dark);
+    position: relative;
+    
+}
+
+.main {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+}
+
+.piano {
+    width: 400px;
+    height: 200px;
+    background-color: red;
+}
+
+.menu {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: min(600px,100%);
+    height: 100%;
+    background-color: yellow;
+}
+.menu--hidden {
+    display: none;
+}
+
+.menu-button {
+    padding: 15px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--action-color-primary);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    place-content: center;
+    max-width: 4rem;
+}
+
+
+.menu-button:hover {
+    background-color: var(--action-color-secondary);
 }
