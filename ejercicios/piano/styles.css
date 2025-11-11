@@ -4,9 +4,15 @@
     box-sizing: border-box;
 }
 
+@property --numOctavas {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
 :root {
     --font-family: 'Montserrat';
-    --bg-color-dark: hsl(30, 50%, 89%);
+    --bg-color-dark: hsl(30, 50%, 83%);
     --bg-color: hsl(30, 92%, 94%);
     --bg-color-light: hsl(30, 100%, 99%);
 
@@ -18,7 +24,7 @@
     --border-color-muted: hsl(30, 27%, 60%);
 
     --action-color-primary: hsl(37, 35%, 41%);
-    --action-color-secondary: hsl(205, 87%, 26%);
+    --action-color-secondary: hsl(206, 71%, 60%);
 
     --alert-color-danger: hsl(9, 21%, 41%);
     --alert-color-warning: hsl(52, 23%, 34%);
@@ -35,57 +41,106 @@ body {
     font-size: 16px;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    /* align-items: stretch; */
-    gap: 20px;
-    padding: 10px;
-    background-color: var(--bg-color-dark);
-    position: relative;
-    
+    justify-content: start;
+    padding: 0;
+    background-color: var(--bg-color);
+
+}
+.header {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: .5rem;
 }
 
-.main {
-    flex: 1;
+.settings-button {
     height: 100%;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: green;
+    background: var(--action-color-primary);
+    border: none;
+    box-shadow: 0 0 3px rgba(0,0,0,.4);
+    border-radius: 50%;
+    padding: .4rem;
+}
+.settings-button:hover {
+    cursor: pointer;
+    background: var(--action-color-secondary);
+}
+
+.main {
+    flex: 1 1 auto;
+    width: 100%;
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .piano {
-    width: 400px;
-    height: 200px;
-    background-color: red;
-}
-
-.menu {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: min(600px,100%);
-    height: 100%;
-    background-color: yellow;
-}
-.menu--hidden {
-    display: none;
-}
-
-.menu-button {
-    padding: 15px;
-    border: none;
-    border-radius: 50%;
-    background-color: var(--action-color-primary);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
+    background: var(--bg-color-dark);
+    box-shadow: 0 0 10px rgba(0,0,0,.4);
+    border-radius: var(--border-radius);
     display: flex;
-    place-content: center;
-    max-width: 4rem;
+    flex-direction: row;
+    width: 600px;
+    height: 200px;
+    padding: .5rem;
+    border: 3px solid var(--border-color-muted);
 }
 
-
-.menu-button:hover {
-    background-color: var(--action-color-secondary);
+.octava {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+.key {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+.key:active {
+    filter: contrast(60%);
+    transform: translateY(2px);
+}
+
+.white-key {
+    background: var(--bg-color-light);
+    border: 2px solid var(--border-color);
+    flex: 1 1 auto;
+}
+.black-key {
+    background: var(--text-color);
+    width: 8%;
+    height: 60%;
+    position: absolute;
+    z-index: 1;
+}
+
+.octava > .black-key:nth-of-type(1) {
+    left: 8%;
+}
+.octava > .black-key:nth-of-type(2) {
+    left: 20.7%;
+}
+.octava > .black-key:nth-of-type(3) {
+    left: 46%;
+}
+.octava > .black-key:nth-of-type(4) {
+    left: 58.7%;
+}
+.octava > .black-key:nth-of-type(5) {
+    left: 71.35%;
+}
+
+/*.settings-menu {
+    background: yellow;
+    height: 100px;
+    width: 400px;
+    position: fixed;
+    right: 0;
+    left: 0;
+}*/
