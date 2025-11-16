@@ -12,8 +12,8 @@
 </head>
 <body>
     <header class="header">
-        <button class="settings-button">
-            <svg class="settings-button__figure" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.647 4.081a.724 .724 0 0 0 1.08 .448c2.439 -1.485 5.23 1.305 3.745 3.744a.724 .724 0 0 0 .447 1.08c2.775 .673 2.775 4.62 0 5.294a.724 .724 0 0 0 -.448 1.08c1.485 2.439 -1.305 5.23 -3.744 3.745a.724 .724 0 0 0 -1.08 .447c-.673 2.775 -4.62 2.775 -5.294 0a.724 .724 0 0 0 -1.08 -.448c-2.439 1.485 -5.23 -1.305 -3.745 -3.744a.724 .724 0 0 0 -.447 -1.08c-2.775 -.673 -2.775 -4.62 0 -5.294a.724 .724 0 0 0 .448 -1.08c-1.485 -2.439 1.305 -5.23 3.744 -3.745a.722 .722 0 0 0 1.08 -.447c.673 -2.775 4.62 -2.775 5.294 0zm-2.647 4.919a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" /></svg>
+        <button id="settings__opener-btn" class="settings-button">
+            <svg class="settings-button__figure" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.647 4.081a.724 .724 0 0 0 1.08 .448c2.439 -1.485 5.23 1.305 3.745 3.744a.724 .724 0 0 0 .447 1.08c2.775 .673 2.775 4.62 0 5.294a.724 .724 0 0 0 -.448 1.08c1.485 2.439 -1.305 5.23 -3.744 3.745a.724 .724 0 0 0 -1.08 .447c-.673 2.775 -4.62 2.775 -5.294 0a.724 .724 0 0 0 -1.08 -.448c-2.439 1.485 -5.23 -1.305 -3.745 -3.744a.724 .724 0 0 0 -.447 -1.08c-2.775 -.673 -2.775 -4.62 0 -5.294a.724 .724 0 0 0 .448 -1.08c-1.485 -2.439 1.305 -5.23 3.744 -3.745a.722 .722 0 0 0 1.08 -.447c.673 -2.775 4.62 -2.775 5.294 0zm-2.647 4.919a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" /></svg>
         </button>
     </header>
     <main class="main">
@@ -43,10 +43,42 @@
         </div>
 
     </main>
-    <aside class="settings-menu menu--hidden">
+    <aside id="settings__menu" class="settings-menu settings-menu--hidden settings-menu--closing" >
         <div class="settings-menu__inner">
-            <h2>Menu</h2>
-            <p>Aqui va el menu de opciones</p>
+            <h2 class="settings__title"><span>Ajustes</span></h2>
+            <p class="settings__description">Personaliza tu teclado.</p>
+
+            <form id="settings__form" class="settings__form" onsubmit="return false;">
+
+                <!-- La fila ahora es el <div>, no el <label> -->
+                <div class="settings__row">
+
+                    <!-- La etiqueta es solo el texto -->
+                    <label for="settings__dark-mode" class="settings__label">
+                        Modo oscuro
+                    </label>
+
+                    <!-- El control está separado -->
+                    <div class="toggle">
+                        <input id="settings__dark-mode" type="checkbox" />
+                        <span class="toggle-slider" aria-hidden="true"></span>
+                    </div>
+
+                </div>
+
+                <!-- La segunda fila, para mantener la coherencia -->
+                <div class="settings__row">
+                    <label for="setting-octaves" class="settings__label">
+                        Número de octavas
+                    </label>
+                    <input id="setting-octaves" type="number" min="1" max="7" value="1" />
+                </div>
+
+            </form>
+
+            <button id="settings__closer-btn" class="action-button">
+                Cerrar
+            </button>
         </div>
     </aside>
 </body>

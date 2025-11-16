@@ -10,16 +10,21 @@
   initial-value: 1;
 }
 
-:root {
-    --font-family: 'Montserrat';
+:root{
+    --font-family: 'Montserrat', sans-serif;
+    --border-radius: 10px;
+
     --bg-color-dark: hsl(30, 50%, 83%);
     --bg-color: hsl(30, 92%, 94%);
     --bg-color-light: hsl(30, 100%, 99%);
+    --bg-color-out-modal: hsla(26, 10%, 17%, 0.8);
 
     --text-color: hsl(19, 100%, 4%);
     --text-color-muted: hsl(31, 37%, 26%);
 
-    --border-color-highlight: hsl(30, 100%, 98%);;
+    --shadow-color: hsla(0, 0%, 0%, 0.4);
+
+    --border-color-highlight: hsl(30, 50%, 50%);;
     --border-color: hsl(30, 21%, 48%);
     --border-color-muted: hsl(30, 27%, 60%);
 
@@ -30,8 +35,30 @@
     --alert-color-warning: hsl(52, 23%, 34%);
     --alert-color-success: hsl(147, 19%, 36%);
     --alert-color-info: hsl(217 22% 41%);
+}
 
-    --border-radius: 10px;
+body.dark-mode{
+    --bg-color-dark: hsl(19, 100%, 4%);
+    --bg-color: hsl(26,10%,20%);
+    --bg-color-light: hsl(0,2%, 30%);
+    --bg-color-out-modal: hsla(26, 10%, 17%, 0.9);
+
+    --text-color: hsl(30, 100%, 93%);
+    --text-color-muted: hsl(30, 33%, 82%);
+
+    --shadow-color: hsla(0, 0%, 25%, .4);
+
+    --border-color-highlight: hsl(30, 27%, 50%);
+    --border-color: hsl(31, 37%, 26%);
+    --border-color-muted: hsl(32, 60%, 20%);
+
+    --action-color-primary: hsl(31, 62%, 64%);
+    --action-color-secondary: hsl(209, 76%, 71%);
+
+    --alert-color-danger: hsl(9, 26% ,64%);
+    --alert-color-warning: hsl(52, 19%, 57%);
+    --alert-color-success: hsl(146, 17%, 59%);
+    --alert-color-info: hsl(217, 28%, 65%);
 }
 
 body {
@@ -61,7 +88,7 @@ body {
     align-items: center;
     background: var(--action-color-primary);
     border: none;
-    box-shadow: 0 0 3px rgba(0,0,0,.4);
+    box-shadow: 0 0 3px var(--shadow-color);
     border-radius: 50%;
     padding: .4rem;
 }
@@ -81,7 +108,7 @@ body {
 
 .piano {
     background: var(--bg-color-dark);
-    box-shadow: 0 0 10px rgba(0,0,0,.4);
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.4);
     border-radius: var(--border-radius);
     display: flex;
     flex-direction: row;
@@ -108,12 +135,12 @@ body {
 }
 
 .white-key {
-    background: var(--bg-color-light);
+    background: white;
     border: 2px solid var(--border-color);
     flex: 1 1 auto;
 }
 .black-key {
-    background: var(--text-color);
+    background: black;
     width: 8%;
     height: 60%;
     position: absolute;
@@ -146,13 +173,97 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--bg-color-light);
-
+    padding: min(2%, 10px);
+    background-color: var(--bg-color-out-modal);
+    backdrop-filter: blur(10px);
 }
+
+.settings-menu--hidden {
+    transform: translateX(200dvh);
+}
+.settings-menu--closing {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.settings-menu--opening {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
 .settings-menu__inner {
-    background: var(--bg-color-dark);
-    padding: 2rem;
+    background: var(--bg-color-light);
+    box-shadow: 0 4px 20px 0 var(--shadow-color);
+    padding: 2em;
+    border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    gap: 1.5em;
 }
+
+.settings__title {
+    font-size: 2.2em;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: 800;
+}
+.settings__title span {
+    position: relative;
+}
+.settings__title span::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 1em);
+    height: 4px;
+    left: -.5em;
+    bottom: -.18em;
+    background: linear-gradient(to right, var(--text-color), var(--text-color-muted), var(--text-color));
+}
+
+.settings__description {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: var(--text-color-muted);
+    text-align: center;
+}
+
+.settings__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 1em;
+    border: 2px dashed var(--border-color-highlight);
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+}
+
+.settings__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+}
+
+.settings__label {
+    font-size: 1.2em;
+    color: inherit;
+}
+
+.action-button {
+    padding: .8em 1.2em;
+    background: var(--action-color-primary);
+    color: var(--bg-color-light);
+    border: 2px solid var(--border-color-muted);
+    border-radius: var(--border-radius);
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: .03em;
+    width: 70%;
+    min-width: 4rem;
+}
+.action-button:hover {
+    cursor: pointer;
+    background: var(--action-color-secondary);
+}
+
