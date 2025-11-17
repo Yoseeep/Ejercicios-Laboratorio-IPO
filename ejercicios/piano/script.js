@@ -3,6 +3,7 @@ const settings__closer = document.getElementById('settings__closer-btn');
 const settings__opener = document.getElementById('settings__opener-btn');
 const settings__darkMode = document.getElementById('settings__dark-mode');
 
+// Settings menu open/close
 settings__opener.addEventListener('click', () => {
     settings__menu.classList.toggle('settings-menu--hidden');
     settings__menu.classList.replace('settings-menu--closing', 'settings-menu--opening');
@@ -18,6 +19,7 @@ settings__closer.addEventListener('click', () => {
     );
 });
 
+// Dark mode toggle
 settings__darkMode.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 });
