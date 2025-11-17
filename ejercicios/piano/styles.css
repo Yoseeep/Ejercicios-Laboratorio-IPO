@@ -69,7 +69,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    padding: 0;
     background-color: var(--bg-color);
     position: relative;
 }
@@ -112,8 +111,10 @@ body {
     border-radius: var(--border-radius);
     display: flex;
     flex-direction: row;
-    width: 600px;
-    height: 200px;
+    width: 100%;
+    max-width: calc(700px * var(--numOctavas));
+    height: 75dvh;
+    max-height: 400px;
     padding: .5rem;
     border: 3px solid var(--border-color-muted);
 }
@@ -267,3 +268,8 @@ body {
     background: var(--action-color-secondary);
 }
 
+@media (orientation: landscape){
+    .piano {
+        height: 70dvh;
+    }
+}
