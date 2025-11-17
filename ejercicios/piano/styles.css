@@ -282,8 +282,4 @@ body {
     background: var(--action-color-secondary);
 }
 
-/*@media (orientation: landscape){
-    .piano {
-        height: 70dvh;
-    }
-}*/
+
