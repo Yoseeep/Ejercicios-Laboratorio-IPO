@@ -11,70 +11,75 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <header class="header">
-        <button id="settings__opener-btn" class="settings-button">
-            <svg class="settings-button__figure" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.647 4.081a.724 .724 0 0 0 1.08 .448c2.439 -1.485 5.23 1.305 3.745 3.744a.724 .724 0 0 0 .447 1.08c2.775 .673 2.775 4.62 0 5.294a.724 .724 0 0 0 -.448 1.08c1.485 2.439 -1.305 5.23 -3.744 3.745a.724 .724 0 0 0 -1.08 .447c-.673 2.775 -4.62 2.775 -5.294 0a.724 .724 0 0 0 -1.08 -.448c-2.439 1.485 -5.23 -1.305 -3.745 -3.744a.724 .724 0 0 0 -.447 -1.08c-2.775 -.673 -2.775 -4.62 0 -5.294a.724 .724 0 0 0 .448 -1.08c-1.485 -2.439 1.305 -5.23 3.744 -3.745a.722 .722 0 0 0 1.08 -.447c.673 -2.775 4.62 -2.775 5.294 0zm-2.647 4.919a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" /></svg>
-        </button>
-    </header>
-    <main class="main">
+<header class="header">
+    <button id="settings__opener-btn" class="settings-button">
+        <svg class="settings-button__figure" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" ><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.647 4.081a.724 .724 0 0 0 1.08 .448c2.439 -1.485 5.23 1.305 3.745 3.744a.724 .724 0 0 0 .447 1.08c2.775 .673 2.775 4.62 0 5.294a.724 .724 0 0 0 -.448 1.08c1.485 2.439 -1.305 5.23 -3.744 3.745a.724 .724 0 0 0 -1.08 .447c-.673 2.775 -4.62 2.775 -5.294 0a.724 .724 0 0 0 -1.08 -.448c-2.439 1.485 -5.23 -1.305 -3.745 -3.744a.724 .724 0 0 0 -.447 -1.08c-2.775 -.673 -2.775 -4.62 0 -5.294a.724 .724 0 0 0 .448 -1.08c-1.485 -2.439 1.305 -5.23 3.744 -3.745a.722 .722 0 0 0 1.08 -.447c.673 -2.775 4.62 -2.775 5.294 0zm-2.647 4.919a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" /></svg>
+    </button>
+</header>
+<main class="main">
 
-        <div class="piano">
+    <div class="piano">
 
-            <div class="octava">
-                <!--<div class="black-keys">-->
-                    <div class="key black-key" data-note="c#1"></div>
-                    <div class="key black-key" data-note="d#1"></div>
-                    <div class="key black-key" data-note="f#1"></div>
-                    <div class="key black-key" data-note="g#1"></div>
-                    <div class="key black-key" data-note="a#1"></div>
-                <!--</div>-->
-                <!--<div class="white-keys">-->
-                <div class="key white-key" data-note="c0"></div>
-                <div class="key white-key" data-note="d1"></div>
-                <div class="key white-key" data-note="e1"></div>
-                <div class="key white-key" data-note="f1"></div>
-                <div class="key white-key" data-note="g1"></div>
-                <div class="key white-key" data-note="a1"></div>
-                <div class="key white-key" data-note="b1"></div>
-                <div class="key white-key" data-note="c1"></div>
-                <!--</div>-->
+        <div class="octava">
+            <div class="key black-key" data-note="c#1"></div>
+            <div class="key black-key" data-note="d#1"></div>
+            <div class="key black-key" data-note="f#1"></div>
+            <div class="key black-key" data-note="g#1"></div>
+            <div class="key black-key" data-note="a#1"></div>
+
+            <div class="key white-key" data-note="c0"></div>
+            <div class="key white-key" data-note="d1"></div>
+            <div class="key white-key" data-note="e1"></div>
+            <div class="key white-key" data-note="f1"></div>
+            <div class="key white-key" data-note="g1"></div>
+            <div class="key white-key" data-note="a1"></div>
+            <div class="key white-key" data-note="b1"></div>
+            <div class="key white-key" data-note="c1"></div>
+        </div>
+
+    </div>
+
+</main>
+<aside id="settings__menu" class="settings-menu settings-menu--hidden settings-menu--closing" >
+    <div class="settings-menu__inner">
+        <h2 class="settings__title"><span>Ajustes</span></h2>
+        <p class="settings__description">Personaliza tu teclado.</p>
+
+        <form id="settings__form" class="settings__form" onsubmit="return false;">
+
+            <div class="settings__row">
+                <label for="settings__dark-mode" class="settings__label">
+                    Modo oscuro
+                </label>
+                <label class="toggle-switch">
+                    <input id="settings__dark-mode" type="checkbox">
+                    <div class="toggle-switch-background">
+                        <div class="toggle-switch-handle"></div>
+                    </div>
+                </label>
             </div>
 
-        </div>
-
-    </main>
-    <aside id="settings__menu" class="settings-menu settings-menu--hidden settings-menu--closing" >
-        <div class="settings-menu__inner">
-            <h2 class="settings__title"><span>Ajustes</span></h2>
-            <p class="settings__description">Personaliza tu teclado.</p>
-
-            <form id="settings__form" class="settings__form" onsubmit="return false;">
-
-                <div class="settings__row">
-                    <label for="settings__dark-mode" class="settings__label">
-                        Modo oscuro
-                    </label>
-                    <div class="toggle-switch">
-                        <input id="settings__dark-mode" type="checkbox">
-                        <div class="toggle-switch-background">
-                            <div class="toggle-switch-handle"></div>
-                        </div>
-                    </div>
+            <div class="settings__row">
+                <label for="input-octaves" class="settings__label">
+                    Número de octavas
+                </label>
+                <div class="input-number__container">
+                    <input id="input-octaves" class="input-number" type="number" min="1" max="7" value="1" readonly/>
+                    <button id="setting-octaves__plus-btn" class="input-number__btn" data-action="increase" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+                    </button>
+                    <button id="settings-octaves__minus-btn" class="input-number__btn input-number__btn--last" data-action="decrease" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-minus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>
+                    </button>
                 </div>
+            </div>
 
-                <div class="settings__row">
-                    <label for="setting-octaves" class="settings__label">
-                        Número de octavas
-                    </label>
-                    <input id="setting-octaves" type="number" min="1" max="7" value="1" />
-                </div>
+        </form>
 
-            </form>
-
-            <button id="settings__closer-btn" class="action-button">
-                Cerrar
-            </button>
-        </div>
-    </aside>
+        <button id="settings__closer-btn" class="action-button">
+            Cerrar
+        </button>
+    </div>
+</aside>
 </body>
 </html>

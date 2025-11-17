@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-@property --numOctavas {
+@property --numOctaves {
   syntax: "<number>";
   inherits: false;
   initial-value: 1;
@@ -16,7 +16,7 @@
 
     --bg-color-dark: hsl(30, 50%, 83%);
     --bg-color: hsl(30, 92%, 94%);
-    --bg-color-light: hsl(30, 100%, 99%);
+    --bg-color-light: hsl(30, 100%, 98%);
     --bg-color-out-modal: hsla(26, 10%, 17%, 0.8);
 
     --text-color: hsl(19, 100%, 4%);
@@ -35,6 +35,15 @@
     --alert-color-warning: hsl(52, 23%, 34%);
     --alert-color-success: hsl(147, 19%, 36%);
     --alert-color-info: hsl(217 22% 41%);
+
+    --bg-toggle-switch: #ddd;
+    --bg-toggle-switch-active: #05c46b;
+    --bg-toggle-shadow: #ccc;
+    --bg-toggle-active-shadow: #04b360;
+    --toggle-switch-handle-color: hsl(0,0%,97%);
+
+    --bg-input: hsl(0, 0%, 99%);
+    --bg-input__btn: hsl(30,20%,90%);
 }
 
 body.dark-mode{
@@ -118,7 +127,7 @@ body {
     display: flex;
     flex-direction: row;
     width: 100%;
-    max-width: calc(700px * var(--numOctavas));
+    max-width: calc(700px * var(--numOctaves));
     height: calc(100dvh - 6rem);
     max-height: 400px;
     padding: .5rem;
@@ -282,4 +291,101 @@ body {
     background: var(--action-color-secondary);
 }
 
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 4em;
+    height: 1.6em;
+    cursor: pointer;
+}
+
+.toggle-switch input[type="checkbox"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.toggle-switch-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-toggle-switch);
+    border-radius: 20px;
+    box-shadow: inset 0 0 0 2px var(--bg-toggle-shadow);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.toggle-switch-handle {
+    position: absolute;
+    top: .2em;
+    left: .2em;
+    width: 1.25em;
+    height: 1.25em;
+    background-color: var(--toggle-switch-handle-color);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .toggle-switch-background {
+    background-color: var(--bg-toggle-switch-active);
+    box-shadow: inset 0 0 0 2px var(--bg-toggle-active-shadow);
+}
+
+.toggle-switch input[type="checkbox"]:checked + .toggle-switch-background .toggle-switch-handle {
+    transform: translateX(2.2em);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 0 0 3px var(--bg-toggle-switch-active);
+}
+
+/* Input number of octaves */
+
+.input-number__container {
+    width: 9em;
+    height: 2.7em;
+    border: 2px solid var(--border-color-highlight);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: row;
+    background-color: var(--bg-input);
+}
+
+.input-number {
+    flex: 1 1 auto;
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+    padding: .2em .5em;
+    background: transparent;
+    max-width: 3.5em;
+}
+
+.input-number__btn {
+    width: 3em;
+    height: 100%;
+    border: none;
+    border-left: 2px solid var(--border-color-highlight);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: var(--bg-input__btn);
+    box-shadow: inset 0 0 3px hsla(0, 0%, 0%, 0.25);
+}
+
+.input-number__btn--last {
+    border-radius: 0 calc(var(--border-radius) - 2px) calc(var(--border-radius) - 2px) 0;
+}
+
+[data-action='increase']:disabled, [data-action='decrease']:disabled {
+    cursor: not-allowed;
+    filter: opacity(0.2) brightness(0.5);
+}
 
