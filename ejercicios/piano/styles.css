@@ -1,14 +1,21 @@
+@property --max-width-white-key {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 10rem;
+}
+
+@property --numWhiteKeys {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 7;
+}
+
 *,*::before,*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-@property --numOctaves {
-  syntax: "<number>";
-  inherits: false;
-  initial-value: 1;
-}
 
 :root{
     --font-family: 'Montserrat', sans-serif;
@@ -44,6 +51,8 @@
 
     --bg-input: hsl(0, 0%, 99%);
     --bg-input__btn: hsl(30,20%,90%);
+
+    /*--max-width-white-key: 10rem;*/
 }
 
 body.dark-mode{
@@ -120,6 +129,136 @@ body {
     align-items: center;
 }
 
+
+/*!* empieza nuevo
+.piano__container {
+    width: 95%;
+    max-width: 1200px;
+    height: 300px;
+    background-color: var(--piano-bg);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border-top: 4px solid #374151;
+
+    !* Permite scroll horizontal si hay muchas octavas en móvil *!
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.piano {
+    display: flex;
+    height: 100%;
+    !* Si hay muchas octavas, forzamos un ancho mínimo para que no sean inusables *!
+    min-width: fit-content;
+}
+
+!* --- La Octava (Bloque de 12 notas) --- *!
+.octave {
+    position: relative;
+    display: flex;
+    height: 100%;
+    !* Ancho base: se ajusta según el espacio disponible *!
+    width: 300px;
+    flex-shrink: 0; !* Evita que se aplasten demasiado *!
+}
+
+!* --- Teclas Blancas --- *!
+.white-key {
+    flex: 1; !* Ocupan el mismo espacio *!
+    background: white;
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 1;
+    cursor: pointer;
+    transition: background 0.1s;
+    position: relative;
+}
+
+.white-key:active, .white-key.active {
+    background: #e5e7eb;
+    background: linear-gradient(to bottom, #fff 0%, #e5e7eb 100%);
+    transform: scale(0.98);
+    transform-origin: top;
+}
+
+!* --- Teclas Negras --- *!
+.black-key {
+    position: absolute;
+    top: 0;
+    width: 10%; !* Relativo al ancho de la octava *!
+    height: 60%;
+    background: black;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    z-index: 2;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    transition: background 0.1s;
+}
+
+.black-key:active, .black-key.active {
+    background: #000;
+    transform: scale(0.98);
+    transform-origin: top;
+}
+
+!* termina nuevo *!*/
+
+
+
+/* empieza antiguo */
+/*.piano {
+    background: var(--bg-color-dark);
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.4);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: calc(10rem * var(--numWhiteKeys) );
+    height: calc(100dvh - 6rem);
+    max-height: 400px;
+    padding: .5rem;
+    border: 3px solid var(--border-color-muted);
+}*/
+
+
+
+
+
+
+
+/*.piano {
+    background: var(--bg-color-dark);
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.4);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: row;
+    !* El ancho es el mínimo entre el cálculo total de teclas y el 100% del viewport *!
+    width: min(calc(10rem * var(--numWhiteKeys)), 100%);
+    !* El max-width es redundante si ya se usa en width, pero asegura el límite *!
+    max-width: 100%;
+    height: calc(100dvh - 6rem);
+    max-height: 400px;
+    padding: .5rem;
+    border: 3px solid var(--border-color-muted);
+    !* Permite scroll si el contenido interno (por min-width) excede el contenedor *!
+    overflow-x: auto;
+}
+
+.octave {
+    flex: 1 1 auto;
+    position: relative;
+    width: auto;               !* evitar que cada octava intente ocupar 100% *!
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; !* no distribuir con espacios *!
+    gap: 0;                       !* asegurar que no haya separación entre teclas *!
+    align-items: stretch;
+}*/
+
 .piano {
     background: var(--bg-color-dark);
     box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.4);
@@ -127,23 +266,27 @@ body {
     display: flex;
     flex-direction: row;
     width: 100%;
-    max-width: calc(700px * var(--numOctaves));
+    /*max-width: calc(var(--max-width-white-key) * var(--numWhiteKeys) );*/ /* Ajuste en JavaScript */
+    /*margin-inline: auto;*/
     height: calc(100dvh - 6rem);
     max-height: 400px;
     padding: .5rem;
     border: 3px solid var(--border-color-muted);
+    /*overflow: hidden; *//* Evita el scroll horizontal */
 }
 
-.octava {
+.octave {
     position: relative;
-    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    flex: 1; /* Para que las octavas crezcan y se encojan por igual */
 }
+
+
 .key {
     border-radius: 0 0 var(--border-radius) var(--border-radius);
+    cursor: pointer;
 }
 .key:active {
     filter: contrast(60%);
@@ -153,7 +296,9 @@ body {
 .white-key {
     background: white;
     border: 2px solid var(--border-color);
-    flex: 1 1 auto;
+    flex: 1 1 0;    /* permitir que las teclas blancas se distribuyan sin huecos */
+    /*min-width: 2rem;*/
+    max-width: var(--max-width-white-key);
 }
 .black-key {
     background: black;
@@ -161,22 +306,26 @@ body {
     height: 60%;
     position: absolute;
     z-index: 1;
+    /*max-width: 6rem;*/
 }
 
-.octava > .black-key:nth-of-type(1) {
-    left: 8%;
+/*termina antiguo*/
+
+
+.octave > .black-key:nth-of-type(1) {
+    left: 10%;
 }
-.octava > .black-key:nth-of-type(2) {
-    left: 20.7%;
+.octave > .black-key:nth-of-type(2) {
+    left: 24.5%;
 }
-.octava > .black-key:nth-of-type(3) {
-    left: 46%;
+.octave > .black-key:nth-of-type(3) {
+    left: 53%;
 }
-.octava > .black-key:nth-of-type(4) {
-    left: 58.7%;
+.octave > .black-key:nth-of-type(4) {
+    left: 67.5%;
 }
-.octava > .black-key:nth-of-type(5) {
-    left: 71.35%;
+.octave > .black-key:nth-of-type(5) {
+    left: 82%;
 }
 
 /* Settings menu */
