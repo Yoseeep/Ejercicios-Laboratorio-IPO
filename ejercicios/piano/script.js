@@ -60,9 +60,11 @@ octaves__less.addEventListener('click', () => {
 function generatePiano(numOctaves) {
     numOctaves = Number(numOctaves) || 1;
     document.documentElement.style.setProperty('--numWhiteKeys', String(numOctaves * 7));
-    console.log(document.documentElement.style.getPropertyValue('--numWhiteKeys'));
-    numWhiteKeys = numOctaves * 7;
-    piano.style.maxWidth = `${numWhiteKeys * 10}rem`;
+    let numWhiteKeys = numOctaves * 7;
+    let max_width_white_keys = document.documentElement.style.getPropertyValue('--max-width-white-keys') || '10rem';
+    let max_width_white_keys__digit = Array.from(max_width_white_keys).filter(caracter => '0123456789.'.includes(caracter)).join('');
+    let max_width_white_keys__unit = Array.from(max_width_white_keys).filter(caracter => !'0123456789.'.includes(caracter)).join('');
+    piano.style.maxWidth = `${numWhiteKeys * max_width_white_keys__digit}${max_width_white_keys__unit}`;
     piano.innerHTML = '';
 
     const startOctave = 3;
