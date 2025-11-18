@@ -50,7 +50,7 @@ body.dark-mode{
     --bg-color-dark: hsl(19, 100%, 4%);
     --bg-color: hsl(26,10%,20%);
     --bg-color-light: hsl(0,2%, 30%);
-    --bg-color-out-modal: hsla(26, 10%, 17%, 0.9);
+    --bg-color-out-modal: hsla(26, 10%, 8%, 0.9);
 
     --text-color: hsl(30, 100%, 93%);
     --text-color-muted: hsl(30, 33%, 82%);
@@ -179,6 +179,8 @@ body {
     left: 71.35%;
 }
 
+/* Settings menu */
+
 .settings-menu {
     position: absolute;
     height: 100dvh;
@@ -197,7 +199,6 @@ body {
 
 .settings-menu--hidden {
     transform: translateX(300dvh);
-
 }
 .settings-menu--closing {
     opacity: 0;
@@ -223,7 +224,6 @@ body {
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--text-color-muted);
-
 }
 
 .settings__title {
@@ -291,6 +291,7 @@ body {
     background: var(--action-color-secondary);
 }
 
+/* Toggle dark mode */
 
 .toggle-switch {
     position: relative;

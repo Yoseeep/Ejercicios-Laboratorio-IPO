@@ -56,3 +56,5 @@ octaves__less.addEventListener('click', () => {
         octaves__less.disabled = true;
     }
 })
+
+function createPianoKeys() {

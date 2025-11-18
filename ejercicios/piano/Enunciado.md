@@ -7,9 +7,10 @@ El proyecto consiste en una aplicación web que muestra un piano (visión cenita
 Veamos algunos conceptos previos para entender lo que se pide.  
 
 **Notas musicales**: Hay dos notaciones altenativas para nombrar las notas musicales: 
+
 - Notación italiana: do, re, mi, fa, sol, la y si. 
 - Notación germánica: C, D, E, F, G, A y B. E
-Vemos que la notación germánica usa letras y que empieza por C (que equivale a do en la notación italiana). 
+  Vemos que la notación germánica usa letras y que empieza por C (que equivale a do en la notación italiana). 
 
 **Tono y Semitono**:  Entre dos notas comsecutivas hay una distancia en altura de un tono salvo de mi a fa y de si a do, que es de un semitono.
 
@@ -21,11 +22,11 @@ Considerando tonos y semitonos, las notas musicales serían las siguientes:
 
         do, do#/reb, re, re#/mib, mi, fa, fa#/solb, sol, sol#/lab, la, la#/lab, si
 
-
 En un piano, tenemos que: 
+
 - las notas blancas se corresponden con las 7 notas sin alteración: do, re, mi, fa, sol, la, si
 - las notas negras se corresponden con las 5 notas alteradas: do#/reb, re#/mib, fa#/solb, sol#/lab, la#/lab
-Esta es la razón de la disposción asimétrica de notas blancas y negras en un teclado de un piano. Siete frente a cinco.
+  Esta es la razón de la disposción asimétrica de notas blancas y negras en un teclado de un piano. Siete frente a cinco.
 
 En la imagen se muestra un teclado con los nombres de las teclas usando ambas notaciones.
 
@@ -40,7 +41,6 @@ Hay una diferencia acústica importante: el primer do es más grave que el segun
 Para poder consultar las frecuencias de las notas
   https://es.wikipedia.org/wiki/Frecuencias_de_afinaci%C3%B3n_del_piano
 
-
 El contenido del proyecto estará constituido por un fichero index.html con los elementos básicos acompañado de su correspondiente hoja de estilos (style.css) y el guion (script.js) encargado de los aspectos interactivos y funcionales.
 
 ## Objetivos
@@ -52,10 +52,6 @@ El objetivo de esta actividad es el empleo de la Web Audio API para la generaci�
 - El tamaño del piano (y de las teclas) debe adaptarse al tamaño de la pantalla
 - El piano debe abarcar una octava (de do4 a do5)
 - Al pulsar una tecla (negra o blanca) se deberá:
- - reproducir la frecuencia asociada a la nota que se pulsa  
--  el sonido emitido será el generado por una de las cuatro formas de onda de un oscilador: sinusoidad, triangular, cuadrada y diente de sierra
+  - reproducir la frecuencia asociada a la nota que se pulsa  
+- el sonido emitido será el generado por una de las cuatro formas de onda de un oscilador: sinusoidad, triangular, cuadrada y diente de sierra
 - La apliación debe ofrecer un control para modificar la forma de onda
-
-
-
-
