@@ -176,6 +176,7 @@ body {
     z-index: 1;
 }
 
+
 .octave > .black-key:nth-of-type(1) {
     left: 10%;
 }
