@@ -24,81 +24,6 @@ const activeOscillators = {};
 
 generatePiano(Number(num_octaves.value));
 
-// Web AudioAPI
-
-function initAudioContext() {
-    if (!audioCtx) {
-        audioCtx = new AudioContext();
-    }
-    if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-    }
-}
-
-function getFrequency(note, octave) {
-    // Calcular frecuencia base
-    const baseFreq = noteFrequencies[note.toLowerCase()];
-    if (!baseFreq) return 440;
-
-    // Ajustar por octava (La base es octava 4)
-    // Fórmula: Freq = Base * 2^(octava - 4)
-    return baseFreq * Math.pow(2, octave - 4);
-}
-
-function playNote(noteKey, octave) {
-    initAudioContext();
-
-    const noteName = noteKey.replace(/[0-9]/g, ''); // Elimina números si los hay, aunque el dataset viene limpio
-    const fullKey = `${noteName}${octave}`; // Identificador único "c#4"
-
-    // Si ya está sonando esta nota, no hacer nada (evita repeticiones al arrastrar)
-    if (activeOscillators[fullKey]) return;
-
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-
-    // Configurar oscilador
-    /*oscillator.type = waveform_select.value;*/ // Usar el valor del selector
-    oscillator.type = (waveform_select && waveform_select.value) || 'sine';
-    oscillator.frequency.setValueAtTime(getFrequency(noteName, octave), audioCtx.currentTime);
-
-    // Configurar envolvente (Envelope) para evitar "click"
-    gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-    gainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.05); // Ataque suave
-
-    // Conectar: Oscilador -> Ganancia -> Salida
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-
-    oscillator.start();
-
-    // Guardar referencia
-    activeOscillators[fullKey] = { oscillator, gainNode };
-}
-
-function stopNote(noteKey, octave) {
-    const noteName = noteKey.replace(/[0-9]/g, '');
-    const fullKey = `${noteName}${octave}`;
-
-    if (activeOscillators[fullKey]) {
-        const { oscillator, gainNode } = activeOscillators[fullKey];
-
-        // Release suave (desvanecimiento)
-        const releaseTime = 0.2;
-        gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
-        gainNode.gain.setValueAtTime(gainNode.gain.value, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + releaseTime);
-
-        oscillator.stop(audioCtx.currentTime + releaseTime);
-
-        // Limpiar referencia después del stop
-        setTimeout(() => {
-            delete activeOscillators[fullKey];
-        }, releaseTime * 1000);
-    }
-}
-
-
 
 
 // Settings menu open/close
@@ -200,8 +125,8 @@ function generatePiano(numOctaves) {
     document.documentElement.style.setProperty('--numWhiteKeys', String(numOctaves * 7));
     let numWhiteKeys = numOctaves * 7;
     let max_width_white_keys = document.documentElement.style.getPropertyValue('--max-width-white-keys') || '10rem';
-    let max_width_white_keys__digit = Array.from(max_width_white_keys).filter(caracter => '0123456789.'.includes(caracter)).join('');
-    let max_width_white_keys__unit = Array.from(max_width_white_keys).filter(caracter => !'0123456789.'.includes(caracter)).join('');
+    let max_width_white_keys__digit = Array.from(max_width_white_keys).filter(character => '0123456789.'.includes(character)).join('');
+    let max_width_white_keys__unit = Array.from(max_width_white_keys).filter(character => !'0123456789.'.includes(character)).join('');
     piano.style.maxWidth = `${numWhiteKeys * max_width_white_keys__digit}${max_width_white_keys__unit}`;
     piano.innerHTML = '';
 
@@ -238,6 +163,82 @@ function generatePiano(numOctaves) {
         });
 
         piano.appendChild(octaveDiv);
+    }
+}
+
+
+
+// Web AudioAPI
+
+function initAudioContext() {
+    if (!audioCtx) {
+        audioCtx = new AudioContext();
+    }
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume(); // reanuda un AudioContext que está en estado "suspended"
+    }
+}
+
+function getFrequency(note, octave) {
+    // Calcular frecuencia base
+    const baseFreq = noteFrequencies[note.toLowerCase()];
+    if (!baseFreq) return 440;
+
+    // Ajustar por octava (La base es octava 4)
+    // Fórmula: Freq = Base * 2^(octava - 4)
+    return baseFreq * Math.pow(2, octave - 4);
+}
+
+function playNote(noteKey, octave) {
+    initAudioContext();
+
+    const noteName = noteKey.replace(/[0-9]/g, ''); // Elimina números si los hay, aunque el dataset viene limpio
+    const fullKey = `${noteName}${octave}`; // Identificador único "c#4"
+
+    // Si ya está sonando esta nota, no hacer nada (evita repeticiones al arrastrar)
+    if (activeOscillators[fullKey]) return;
+
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    // Configurar oscilador
+    oscillator.type = waveform_select.value; // Usar el valor del selector
+    /* oscillator.type = (waveform_select && waveform_select.value) || 'sine'; */ //PRUEBA antes de agregar selector
+    oscillator.frequency.setValueAtTime(getFrequency(noteName, octave), audioCtx.currentTime);
+
+    // Configurar envolvente (Envelope) para evitar "click"
+    gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+    gainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.05); // Ataque suave
+
+    // Conectar: Oscilador -> Ganancia -> Salida
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    oscillator.start();
+
+    // Guardar referencia
+    activeOscillators[fullKey] = { oscillator, gainNode };
+}
+
+function stopNote(noteKey, octave) {
+    const noteName = noteKey.replace(/[0-9]/g, '');
+    const fullKey = `${noteName}${octave}`;
+
+    if (activeOscillators[fullKey]) {
+        const { oscillator, gainNode } = activeOscillators[fullKey];
+
+        // Release suave (desvanecimiento)
+        const releaseTime = 0.2;
+        gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+        gainNode.gain.setValueAtTime(gainNode.gain.value, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + releaseTime);
+
+        oscillator.stop(audioCtx.currentTime + releaseTime);
+
+        // Limpiar referencia después del stop
+        setTimeout(() => {
+            delete activeOscillators[fullKey];
+        }, releaseTime * 1000);
     }
 }
 
