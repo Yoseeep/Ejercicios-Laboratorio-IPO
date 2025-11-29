@@ -1,14 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Canvas</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src ="scripts.js" defer></script>
+    <title>Conduce - Canvas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+
+    <script src ="scripts.js" defer></script>
+    <script type="module" src="js/main.js"></script>
 </head>
 <body>
     <header id="header" class="header">
@@ -19,14 +25,30 @@
                 Evita chocar con los otros vehículos y acumula la mayor puntuación posible.
             </p>
             <p class="header__description">
-                Controla el vehículo con las flechas del teclado o con los botones W, A, S, D.
+                Controla el vehículo con las flechas del teclado o con los botones A, D.
                 Pulsa el botón "Iniciar juego" para comenzar.
             </p>
             <button id="button-start" class="header__button"> Iniciar juego </button>
         </div>
     </header>
-    <main>
 
+    <main id="game-container">
+        <div id="ui-layer">
+
+            <div id="score-board">Puntuación: <span id="score">0</span></div>
+            <div id="game-over" class="hidden">
+                <div class="game-over__box">
+                    <h1>GAME OVER</h1>
+                    <p id="final-score">Puntuación conseguida: 0</p>
+                    <p>Press Space or Tap to Restart</p>
+                </div>
+            </div>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+        <div id="controls">
+            <button id="btn-left" class="control-btn">🡸</button>
+            <button id="btn-right" class="control-btn">🡺</button>
+        </div>
     </main>
 </body>
 </html>
