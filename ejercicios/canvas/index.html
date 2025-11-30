@@ -11,12 +11,8 @@
     <!--<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">-->
 
     <link rel="stylesheet" href="styles.css">
-    <!--<link rel="stylesheet" href="styles/theme.css">-->
-    <!--<link rel="stylesheet" href="styles/main.css" />-->
-    <!--<link rel="stylesheet" href="styles/header.css" />-->
 
-    <script src ="scripts.js" defer></script>
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/scripts.js"></script>
 </head>
 <body>
     <header id="header" class="header">
@@ -27,7 +23,7 @@
                 Evita chocar con los otros vehículos y acumula la mayor puntuación posible.
             </p>
             <p class="header__description">
-                Controla el vehículo con las flechas del teclado o con los botones A, D.
+                Controla el vehículo con las flechas del teclado o con las teclas A, D.
                 Pulsa el botón "Iniciar juego" para comenzar.
             </p>
             <button id="button-start" class="header__button"> Iniciar juego </button>
@@ -35,22 +31,22 @@
     </header>
 
     <main id="game-container" class="game-container">
-        <div id="ui-layer" class="ui-layer">
-            <div id="score-board" class="score-board">Puntuación: <span id="score">0</span></div>
+        <div class="ui-layer">
+            <div class="score-board">Puntuación: <span id="score">0</span></div>
             <div id="game-over" class="game-over hidden">
                 <div class="game-over__box">
                     <h2>GAME OVER</h2>
                     <p id="final-score">Puntuación conseguida: 0</p>
-                    <p>Press Space or Tap to Restart</p>
+                    <p>Press Space or Click to Restart</p>
                 </div>
             </div>
         </div>
         <canvas id="gameCanvas" class="canvas"></canvas>
-        <div id="controls" class="controls">
-            <button id="btn-left" class="control-btn"><!--🡸-->
+        <div class="controls">
+            <button id="btn-left" class="control-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 -960 960 960" width="100%" fill=auto><path d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z"/></svg>
             </button>
-            <button id="btn-right" class="control-btn"><!--🡺-->
+            <button id="btn-right" class="control-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 -960 960 960" width="100%" fill="auto"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></svg>
             </button>
         </div>

@@ -32,10 +32,6 @@ export class Car {
         }
     }
 
-    update() {
-        // Placeholder for any continuous updates if needed
-    }
-
     resize(newWidth, newHeight) {
         // Calculate relative position before resize
         const relativeX = this.x / this.canvasWidth;

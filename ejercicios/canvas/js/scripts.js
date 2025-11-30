@@ -91,10 +91,10 @@ function animate() {
     // Decrease interval as score increases to spawn more often (min 40 frames)
     let currentInterval = Math.max(40, 100 - (score * 2));
 
-    if (frameCount % currentInterval === 0 || (frameCount % currentInterval < 1 && frameCount > 100)) {
+    /*if (frameCount % currentInterval === 0 || (frameCount % currentInterval < 1 && frameCount > 100)) {
         // The modulo check might miss if interval changes, so we use a simplified check or just keep it simple.
         // Better approach for variable interval:
-    }
+    }*/
 
     // Simple variable interval logic
     if (frameCount >= currentInterval) {
@@ -163,11 +163,5 @@ const startButton = document.getElementById('button-start');
 
 startButton.addEventListener('click', () => {
     header.classList.add('header--hidden');
-    // Wait for animation to finish or start immediately?
-    // Let's start immediately but maybe pause updates until hidden?
-    // Or just start.
     init();
 });
-
-// Remove auto init
-// init();

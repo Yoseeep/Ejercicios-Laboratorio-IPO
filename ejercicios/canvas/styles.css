@@ -18,6 +18,7 @@
     --road-color: #57606f;
 
     --font-family: 'Handjet';
+    /*--font-family: 'Pixelify Sans';*/
 }
 
 body {
@@ -69,13 +70,15 @@ body {
     color: var(--color-secondary);
     font-weight: 800;
     text-wrap: balance;
+    text-align: center;
 }
 
 .header__description {
     font-size: 1.4rem;
     color: var(--color-secondary);
-    font-weight: 600;
+    font-weight: 500;
     text-wrap: pretty;
+    text-align: center;
 }
 
 .header__button {
