@@ -1,4 +1,4 @@
-#game-container {
+/*#game-container {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -6,31 +6,31 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
+}*/
 
-canvas {
+/*canvas {
     background-color: var(--road-color);
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
     max-width: 100%;
     max-height: 80vh;
-}
+}*/
 
-#ui-layer {
+/*#ui-layer {
     position: absolute;
     top: 20px;
     left: 0;
     width: 100%;
     text-align: center;
     pointer-events: none;
-}
+}*/
 
-#score-board {
+/*#score-board {
     font-size: 2rem;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
+}*/
 
-#game-over {
+/*#game-over {
     position: fixed;
     top: 0;
     left: 0;
@@ -43,9 +43,9 @@ canvas {
     align-items: center;
     z-index: 100;
     pointer-events: auto;
-}
+}*/
 
-.game-over__box {
+/*.game-over__box {
     background: var(--bg-color-primary);
     padding: 2rem;
     border-radius: 15px;
@@ -54,30 +54,30 @@ canvas {
     box-shadow: 6px 6px 1px 1px var(--color-secondary);
     color: var(--color-secondary);
     max-width: 90%;
-}
+}*/
 
-#game-over h1 {
+/*#game-over h1 {
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 1rem;
-}
+}*/
 
-#game-over p {
+/*#game-over p {
     font-size: 1.5rem;
     font-weight: 600;
-}
+}*/
 
-.hidden, #game-over.hidden {
+/*.hidden, #game-over.hidden {
     display: none !important;
-}
+}*/
 
-#controls {
+/*#controls {
     margin-top: 20px;
     display: flex;
     gap: 20px;
-}
+}*/
 
-.control-btn {
+/*.control-btn {
     background: var(--ui-bg);
     border: 2px solid var(--text-color);
     color: var(--text-color);
@@ -87,13 +87,14 @@ canvas {
     font-size: 1.5rem;
     cursor: pointer;
     transition: transform 0.1s;
-}
+}*/
 
-.control-btn:active {
+/*.control-btn:active {
     transform: scale(0.95);
     background: var(--accent-color);
-}
+}*/
 
+/*
 @media (max-width: 600px) {
     #score-board {
         font-size: 1.5rem;
@@ -113,4 +114,4 @@ canvas {
     canvas {
         max-height: 75vh;
     }
-}
+}*/
